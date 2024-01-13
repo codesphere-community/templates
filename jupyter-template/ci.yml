@@ -1,0 +1,10 @@
+prepare:
+  steps:
+    - name: Install Dependencies
+      command: PYENV_ROOT=/home/user/app/.pyenv PIPENV_YES=1 pipenv install jupyter --python 3.9.11
+test:
+  steps: []
+run:
+  steps:
+    - name: Start Server
+      command: PYENV_ROOT=/home/user/app/.pyenv pipenv run jupyter notebook

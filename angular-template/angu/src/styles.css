@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+/* Hintergrundfarbe für den Header */
+body {
+  margin: 0;
+  background-color: #814BF6;
+}
+
+
+.header {
+  background-color: #110E27;
+  padding: 15px;
+  margin: 0; /* Abstand um den Inhalt */
+  text-align: center; /* Inhalt horizontal zentrieren */
+}
+
+/* Styling für das Logo-Bild */
+.header-logo {
+  display: inline-block; /* Block-Element in Inline-Block ändern */
+  width: 500px;
+  height: auto; /* Automatische Anpassung der Höhe */
+}
+
+/* Styling für den Titel */
+.header-title {
+  color: #ffffff; /* Textfarbe */
+  margin-top: 20px; /* Abstand zum Logo */
+  font-family: Inter, sans-serif;
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  justify-content: center; 
+}

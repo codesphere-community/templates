@@ -1,0 +1,14 @@
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let pdf of uploadedPdfs" cdkDrag>{{pdf.name}}</div>
+</div>
+
+
+<div align-items="center" class="upload-controls">
+  <input type="file" (change)="reorderFiles($event)" multiple accept=".pdf">
+</div>
+
+	<div *ngIf="mergedPdf" class="merged-pdf">
+    <h2>Merged PDF</h2>
+    <input type="text" [(ngModel)]="newFileName" placeholder="Neuer Dateiname">
+    <button (click)="downloadMergedPDF()">Download Merged PDF</button>
+  </div>

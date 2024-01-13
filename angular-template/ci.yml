@@ -1,0 +1,11 @@
+prepare:
+  steps:
+    - command: sudo npm install -g @angular/cli
+    - command: sudo n install 18.10
+    - command: cd angu/
+    - command: npm install express
+test:
+  steps: []
+run:
+  steps:
+    - command: node ./angu/server.js

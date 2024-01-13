@@ -1,0 +1,89 @@
+.pdf-upload-zone {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.drop-zone-label {
+  font-size: 18px;
+}
+
+.upload-controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.merged-pdf {
+  margin-top: 20px;
+}
+
+/* Weitere Stile nach Bedarf hinzufügen */
+/* app-pdf-upload.component.css */
+
+.pdf-upload-zone {
+  /* ... */
+  transition: border 0.3s ease-in-out; /* Beispiel für eine Übergangsanimation */
+}
+
+/* Weitere Übergangseigenschaften nach Bedarf hinzufügen */
+.cdk-drop-list {
+	  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.example-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  max-width: 100%;
+  border: none;
+  min-height: 60px;
+  display: block;
+  background: #814BF6;
+  border-radius: 4px;
+  overflow: hidden;
+	font-family: Inter, sans-serif;
+}
+
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: #110E27;
+  font-size: 20px;
+  text-align: center;
+  font-family: Inter, sans-serif;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

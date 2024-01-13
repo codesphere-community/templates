@@ -1,0 +1,12 @@
+prepare:
+  steps:
+    - name: Install Python 3.10 (takes a few minutes)
+      command: PYENV_ROOT=/home/user/app/.pyenv PIPENV_YES=1 pipenv install --python 3.10 --skip-lock
+    - name: Install dependencies
+      command: PYENV_ROOT=/home/user/app/.pyenv pipenv run python launch.py --exit      
+test:
+  steps: []
+run:
+  steps:
+    - name: Start Server
+      command: PYENV_ROOT=/home/user/app/.pyenv pipenv run python launch.py --listen --port 3000

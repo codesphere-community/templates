@@ -1,0 +1,12 @@
+prepare:
+  steps:
+    - name: Install java
+      command: nix-env -iA nixpkgs.jdk19
+    - name: Maven generate sources
+      command: JAVA_HOME="$(readlink -e $(type -p javac) | sed  -e 's/\/bin\/javac//g')" ./mvnw install generate-sources -DskipTests     
+test:
+  steps: []
+run:
+  steps:
+    - name: mvn spring-boot:run
+      command: JAVA_HOME="$(readlink -e $(type -p javac) | sed  -e 's/\/bin\/javac//g')" ./mvnw spring-boot:run

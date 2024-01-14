@@ -1,0 +1,12 @@
+prepare:
+  steps:
+    - name: Install
+      command: npm install
+    - name: Build
+      command: npm run build      
+test:
+  steps: []
+run:
+  steps:
+    - name: Run
+      command: npm run start

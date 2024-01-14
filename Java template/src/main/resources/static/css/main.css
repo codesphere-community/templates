@@ -1,0 +1,103 @@
+:root {
+    --max-width: 1100px;
+    font-family: Arial, sans-serif;
+  }
+  h1 {
+    color: #000000;
+    text-align: center;
+  }
+  h2 {
+    color: #000000;
+    text-align: center;
+  }
+  h3 {
+    margin-bottom: 0px;
+    color: #000000;
+  }
+  
+  p {
+    color: #938CA7;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #814BF6;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .tag {
+    font-size: 0.8rem;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #814BF6;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 12px;
+    color: #fff;
+  }
+  .tag[data-results="Informative"] {
+    background-color: #ff980e;
+  }
+  .tag[data-results="Discussion"] {
+    background-color: #1fb881;
+  }
+  .tag[data-results="Company news"] {
+    background-color: #00bcff;
+  }
+  
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    margin-top: 8px;
+    border-top: 1px solid rgba(65, 57, 134, 0.5);
+  }
+  
+  .row {
+    display: flex;
+    column-gap: 20px;
+  }
+  
+  
+  .previews {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 396px;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .post-preview {
+    align-items: center;
+    padding: 20px 22px;
+    background: rgba(193, 193, 193, 0.5);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    min-height: 320px;
+    align-items: start;
+  }
+  
+  .post-preview:hover {
+    background: rgba(172, 172, 172, 0.6);
+    transition: 0.3s; 
+  }
+  
+  @media (max-width: 991px) {
+    p, h1, h2, h3 {
+      text-align: center;
+    }
+    .previews {
+      display: block;
+    }
+    .post-preview{
+      margin-top: 30px;
+    } 
+  }

@@ -1,0 +1,29 @@
+prepare:
+  # Put your commands here.
+  steps:
+  - name: "Run 1-click installer"
+    command: "if [ -v NV_LIBCUBLAS_VERSION ];
+      then echo 'Install for gpu'
+        && GPU_CHOICE=A LAUNCH_AFTER_INSTALL=False ./start_linux.sh; 
+      else echo 'Install for cpu'
+        && INSTALL_EXTENSIONS=False GPU_CHOICE=N LAUNCH_AFTER_INSTALL=False ./start_linux.sh; 
+      fi"
+  - name: "Download model"
+    command: "wget -P /home/user/app/models https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v0.3-GGUF/resolve/main/tinyllama-1.1b-chat-v0.3.Q6_K.gguf"   
+
+test:
+  # Put your commands here.
+  steps:
+  - name: "Unit Tests"
+    command: ""
+
+run:
+  # Put your commands here.
+  steps:
+  - name: "Run"
+    command: "if [ -v NV_LIBCUBLAS_VERSION ];
+      then echo 'Run for gpu'
+        && GPU_CHOICE=A ./start_linux.sh --model tinyllama-1.1b-chat-v0.3.Q6_K.gguf; 
+      else echo 'Run for cpu'
+        && INSTALL_EXTENSIONS=False GPU_CHOICE=N ./start_linux.sh --model tinyllama-1.1b-chat-v0.3.Q6_K.gguf; 
+      fi"

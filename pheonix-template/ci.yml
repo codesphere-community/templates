@@ -1,0 +1,15 @@
+prepare:
+  steps:
+    - command: "[[ -d ~/.asdf ]] || git clone https://github.com/asdf-vm/asdf.git
+        ~/.asdf --branch v0.13.1"
+    - command: ~/.asdf/bin/asdf plugin add erlang
+    - command: ~/.asdf/bin/asdf plugin add elixir
+    - command: ~/.asdf/bin/asdf install
+    - command: source ~/.asdf/asdf.sh && mix archive.install --force hex phx_new
+    - command: source ~/.asdf/asdf.sh && mix setup
+test:
+  steps: []
+run:
+  steps:
+    - command: "source ~/.asdf/asdf.sh "
+    - command: yes 'a' | mix phx.server

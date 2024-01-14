@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  padding: 20px;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.ElementCard {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  width: vw(3);
+  height: 55px;
+  margin: 0;
+  padding: 0;
+}
+.ElemBio {
+  grid-column-start: 3;
+  grid-column-end: 13;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  margin: 0 10px 0 10px;
+  text-align: left;
+}
+.Title {
+  grid-column-start: 3;
+  grid-column-end: 13;
+  grid-row-start: 0;
+  grid-row-end: 1;
+}
+.ElementCard:hover {
+  background-color: #f3acff;
+  cursor: default;
+}
+
+.atomNum {
+  font-size: 12px;
+  margin-top: 0;
+}
+.symbolLbl {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 1px;
+}

@@ -1,0 +1,330 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "640ee1a5-e189-4db8-a4a6-89285a33fa1d",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1300,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "03f8c0e9-4edd-42f0-8a72-5fa60bdb3fc9",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1720,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "id": "0aef0065-ff53-4d31-86f7-8d5e5a517bfe",
+      "name": "Monday 8 am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "text": "=# Top 10 Trending Models\n\nHere is a list of the Top 10 trending models on Hugging Face with a brief summarization:",
+        "options": {}
+      },
+      "id": "7b5ad98d-73ed-43fe-98d5-39205fbccf92",
+      "name": "First message",
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 1,
+      "position": [
+        840,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "get_trending_models",
+        "options": {}
+      },
+      "id": "84a5f299-f454-4875-936d-9d9f491e4a59",
+      "name": "Get model names",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1000,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "choices[0].text",
+              "renameField": true,
+              "outputFieldName": "summary"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2170b5ac-a443-4531-9997-1bc1ff8c0d70",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1860,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "name",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "link",
+        "options": {}
+      },
+      "id": "a51194c2-46eb-4230-bdb6-cb66fce3523e",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=get_model_card?model_name={{ $json.name }}",
+        "options": {}
+      },
+      "id": "9221adb3-b1a0-4968-8656-a7401299b9ca",
+      "name": "Get model description",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "69c30660-04ca-4477-bcaf-dcce19ece90f",
+      "name": "For each model",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1500,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "v1/completions",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\": \"\\n\\n# Instructions:\\nplease provide bullet point summary. print before every bullet point a new line but as escaped character. Furthermore just provide up to 3 bullet points. each bullet point must start with *. This is the structure for your output: ## Modeltype\\n*(bulletpoints)\\n## Summary\\n*(bulletpoints)\\n\\nin the following section is the text you have to analyse:\\n{{ $json.text }}\\n\\n# Response: in the following i will summarize the model card of the  model {{ $json.name }}:\\n\",\n  \"stop\": [\n\"\\n##Evaluation\",\n\"\\n##Model Details\",\n\"\\n##Applications\",\n\"\\n##OutofScope Use Restrictions\",\n\"\\n##Research Applications\",\n\"\\n##license\",\n\"\\n##model sources\",\n\"\\n##User Study\",\n\"\\n##excluded uses:\",\n\"\\nLinks\",\n\"\\nUsage\",\n\"\\nInstructions for Use\"\n  ]\n}\n",
+        "options": {
+          "timeout": 1000000000
+        }
+      },
+      "id": "e621d082-1a92-4ecc-834d-36a5705b150c",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1700,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "text": "=#  {{ $json.name }}",
+        "options": {
+          "embeds": "=[{\n  \"type\": \"rich\",\n  \"title\": \"{{ $json['name'] }}\",\n  \"color\": 16739674,\n  \"url\": \"{{ $json['link'] }}\",\n  \"description\": {{ JSON.stringify($json.summary[0]) }}}]\n   "
+        }
+      },
+      "id": "d83d3796-b5ee-4427-a7bf-e406c774bd25",
+      "name": "Post summary",
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 1,
+      "position": [
+        1940,
+        280
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "For each model",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Post summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Monday 8 am": {
+      "main": [
+        [
+          {
+            "node": "First message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "First message": {
+      "main": [
+        [
+          {
+            "node": "Get model names",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get model names": {
+      "main": [
+        [
+          {
+            "node": "Get model description",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "For each model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get model description": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "For each model": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "14dfd56e-e07a-443a-80f7-9dfb7da0f728",
+  "id": "DvVa32LzPpogH4Ns",
+  "meta": {
+    "instanceId": "1430b65aa2784ba212396cab7dd102f2d86c298aaa0c863f9d5e572225ad65a4"
+  },
+  "tags": []
+}

@@ -1,0 +1,40 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Java & Ghost.io RSS Feed Example</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+</head>
+<body>
+    <main>
+        <h1>Insights and updates from across the team</h1>
+        <div class="previews">
+            <div th:each="post : ${blogPosts}">
+                <a th:href="'https://codesphere.com/articles' + ${post.slug}">
+                    <div class="post-preview">
+                        <div>
+                            <div class="row">
+                                <p class="tag" th:data-results="${post.category}" th:text="${post.category}"></p>
+                                <p>🗓️ <span th:text="${post.publishedDate}"></span></p>
+                            </div>
+
+                            <h3 th:text="${post.title}"></h3>
+                            <div class="info">
+                                <p th:text="${post.description}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+
+
+
+
+
+

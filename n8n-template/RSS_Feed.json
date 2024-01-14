@@ -1,0 +1,380 @@
+{
+  "name": "RSS-Feed",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "feedUrl": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+      },
+      "id": "416da3ff-312c-4267-8ec8-7f5f2300338a",
+      "name": "New-York Times",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            },
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "feedUrl": "https://feeds.bbci.co.uk/news/rss.xml"
+      },
+      "id": "2ca90302-ddaf-4143-b781-81b49326ded4",
+      "name": "BBC",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldValue": "={{ $json.title }}"
+            },
+            {
+              "fieldValue": "={{ $json.link }}"
+            },
+            {
+              "fieldValue": "={{ $json.pubDate }}"
+            }
+          ]
+        }
+      },
+      "id": "6d123cea-70b4-4ff7-850e-cb167d614658",
+      "name": "Baserow1",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        800
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "41BQy3svoS5bu3t2",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "2323866918",
+          "mode": "list",
+          "cachedResultName": "Privates 🏡"
+        },
+        "content": "={{ $json.link }}",
+        "options": {}
+      },
+      "id": "0db1ac47-f65f-4e2d-8e25-46581614ffea",
+      "name": "Todoist1",
+      "type": "n8n-nodes-base.todoist",
+      "typeVersion": 2,
+      "position": [
+        1640,
+        940
+      ],
+      "credentials": {
+        "todoistApi": {
+          "id": "RsflYODmQ0IHefl0",
+          "name": "Todoist account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "=------------------------------------------------------------\n# {{ $json.title }}\n{{ $json.pubDate }}\n\n**Link:** {{ $json.link }}",
+        "options": {}
+      },
+      "id": "633349c2-3049-47b5-9d38-23eb9d9181a4",
+      "name": "Discord1",
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "feedUrl": "https://techcrunch.com/feed/"
+      },
+      "id": "ba78d33d-7235-4c7b-970c-2ff5d8828173",
+      "name": "TECHCRUNCH",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "feedUrl": "https://www.theverge.com/rss/frontpage"
+      },
+      "id": "233c9bdd-bf42-4e02-abdf-11603f27de09",
+      "name": "theverge",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "feedUrl": "https://mashable.com/feeds/rss/all"
+      },
+      "id": "397d893b-d0b2-48d7-8fcb-09064f3f9219",
+      "name": "mashable",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "feedUrl": "https://www.wired.com/feed/rss"
+      },
+      "id": "22c3a329-d482-4d48-b226-92be720387de",
+      "name": "wired",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "feedUrl": "https://www.cnet.com/rss/news/"
+      },
+      "id": "bc6eceec-f349-49ed-bcc1-5adeaeedbc75",
+      "name": "cnet",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        1340
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "TECHCRUNCH": {
+      "main": [
+        [
+          {
+            "node": "Discord1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Todoist1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Baserow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BBC": {
+      "main": [
+        [
+          {
+            "node": "Baserow1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Todoist1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Discord1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New-York Times": {
+      "main": [
+        [
+          {
+            "node": "Baserow1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Todoist1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Discord1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "theverge": {
+      "main": [
+        [
+          {
+            "node": "Baserow1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Todoist1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Discord1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mashable": {
+      "main": [
+        [
+          {
+            "node": "Baserow1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Todoist1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Discord1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wired": {
+      "main": [
+        [
+          {
+            "node": "Baserow1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Todoist1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Discord1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cnet": {
+      "main": [
+        [
+          {
+            "node": "Baserow1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Todoist1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Discord1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3f9e46ef-cad7-45f4-8244-133cf4b0f2e3",
+  "id": "GDiBWOMlrJHbaKSw",
+  "meta": {
+    "instanceId": "1430b65aa2784ba212396cab7dd102f2d86c298aaa0c863f9d5e572225ad65a4"
+  },
+  "tags": []
+}

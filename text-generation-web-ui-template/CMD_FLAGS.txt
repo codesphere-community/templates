@@ -1,0 +1,7 @@
+# Only used by the one-click installer.
+# Example:
+# --listen --api
+
+--listen
+--listen-port 3000
+--listen-host 0.0.0.0

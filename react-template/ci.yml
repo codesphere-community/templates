@@ -1,0 +1,24 @@
+# Example pipeline definition, for react apps.
+#
+# Note: If you have very long and/or complex commands,
+# consider writing a script and execute it from here.
+
+prepare:
+  # Put your commands here.
+  steps:
+  - name: "Install dependencies"
+    command: "yarn install"
+  - name: "Build"
+    command: "yarn build"
+
+test:
+  # Put your commands here.
+  steps:
+  - name: "Unit Tests"
+    command: "yarn test --watchAll=false --passWithNoTests"
+
+run:
+  # Put your commands here.
+  steps:
+  - name: "Run"
+    command: "yarn start"

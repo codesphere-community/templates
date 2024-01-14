@@ -1,0 +1,38 @@
+prepare:
+  # Put your commands here.
+  steps:
+  - name: "Install dependencies"
+    command: "if [ -v NV_LIBCUBLAS_VERSION ];
+      then echo 'Install for gpu'
+        && CMAKE_ARGS='-DLLAMA_CUBLAS=on' FORCE_CMAKE=1 pipenv install llama-cpp-python; 
+      else echo 'Install for cpu'
+        && pipenv install llama-cpp-python; 
+      fi"
+  - name: "Install server"
+    command: "if [ -v NV_LIBCUBLAS_VERSION ];
+      then echo 'Install server for gpu'
+        && CMAKE_ARGS='-DLLAMA_CUBLAS=on' FORCE_CMAKE=1 pipenv install llama-cpp-python[server]; 
+      else echo 'Install server for cpu'
+        && pipenv install llama-cpp-python[server]; 
+      fi"
+  - name: "Create model directory"
+    command: "mkdir models || true"    
+  - name: "Download model"
+    command: "wget -P /home/user/app/models https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/resolve/main/codellama-7b-instruct.Q5_K_M.gguf"   
+
+test:
+  # Put your commands here.
+  steps:
+  - name: "Unit Tests"
+    command: ""
+
+run:
+  # Put your commands here.
+  steps:
+  - name: "Run"
+    command: "if [ -v NV_LIBCUBLAS_VERSION ];
+      then echo 'Start server with gpu'
+        && pipenv run python3 -m llama_cpp.server --model /home/user/app/models/codellama-7b-instruct.Q5_K_M.gguf --port 3000 --host 0.0.0.0 --n_gpu_layers 35; 
+      else echo 'Start server with cpu'
+        && pipenv run python3 -m llama_cpp.server --model /home/user/app/models/codellama-7b-instruct.Q5_K_M.gguf --port 3000 --host 0.0.0.0; 
+      fi"

@@ -1,0 +1,19 @@
+# Example pipeline definition, for a Python/Flask project.
+
+prepare:
+  # Put your commands here.
+  steps:
+  - name: "Install dependencies"
+    command: "pipenv install"
+
+test:
+  # Put your commands here.
+  steps:
+  - name: "Empty"
+    command: "echo 'no tests'"
+
+run:
+  # Put your commands here.
+  steps:
+  - name: "Run"
+    command: "pipenv run python server.py"

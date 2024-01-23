@@ -15,4 +15,4 @@ run:
   # Put your commands here.
   steps:
   - name: "Run"
-    command: "yarn preview"
+    command: "yarn preview --host --port 3000"

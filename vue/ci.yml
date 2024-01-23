@@ -1,7 +1,3 @@
-# Example pipeline definition, for react apps.
-#
-# Note: If you have very long and/or complex commands,
-# consider writing a script and execute it from here.
 
 prepare:
   # Put your commands here.

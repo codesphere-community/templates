@@ -1,0 +1,18 @@
+
+prepare:
+  # Put your commands here.
+  steps:
+  - name: "Install dependencies"
+    command: "yarn install"
+  - name: "Build"
+    command: "yarn build"
+
+test:
+  # Put your commands here.
+  steps: []
+
+run:
+  # Put your commands here.
+  steps:
+  - name: "Run"
+    command: "yarn preview --host --port 3000"

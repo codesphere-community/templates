@@ -33,7 +33,7 @@ jobs:
       
       - name: List subfolders
         run: |
-          find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \; > subfolders.txt
+          find . -mindepth 1 -maxdepth 1 -type d \( ! -name '.github' -a ! -name '.git' \) -exec basename {} \; > subfolders.txt
           cat subfolders.txt
       
       - name: Process subfolders

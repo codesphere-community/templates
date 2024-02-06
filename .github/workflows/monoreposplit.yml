@@ -1,21 +1,24 @@
 name: Monorepo Split
-# You may pin to the exact commit or the version.
-# uses: danharrin/monorepo-split-github-action@ac9845270ef47266435b4f124b133a323619e738
-uses: danharrin/monorepo-split-github-action@v2.3.0
-with:
-  # Local package directory
-  package_directory: './'
-  # Host
-  repository_host: github.com # optional, default is github.com
-  # Remote organization
-  repository_organization: 'codesphere-community'
-  # Remote repository
-  repository_name: 'templates'
-  # Git branch
-  branch: 'main' # default is main
-  # [Optional] Tag to be released
-  tag: # optional
-  # Git User Email
-  user_email: 'jan-david.wiederstein@codesphere.com'
-  # Git User Name
-  user_name: 'Datata1'
+on:
+  push:
+    branches:
+      - main  # oder den Namen deiner Hauptbranch
+
+jobs:
+  monorepo-split:
+    name: Monorepo Split Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      
+      - name: Run Monorepo Split Action
+        uses: danharrin/monorepo-split-github-action@v2.3.0
+        with:
+          package_directory: './'
+          repository_host: github.com
+          repository_organization: 'codesphere-community'
+          repository_name: 'templates'
+          branch: 'main'
+          user_email: 'jan-david.wiederstein@codesphere.com'
+          user_name: 'Datata1'

@@ -37,7 +37,7 @@ jobs:
             cd templates
             
             # Apply git-filter-repo
-            ./git-filter-repo --subdirectory-filter "$subfolder"
+            git-filter-repo --subdirectory-filter "$subfolder"
             
             # Check if repository already exists
             REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"

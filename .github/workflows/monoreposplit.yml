@@ -59,7 +59,7 @@ jobs:
             fi
             
             # Initialize new repository
-            git remote add origin https://$NAME:${{ secrets.ACCESS_TOKEN }}@$REMOTE_URL
+            git remote add origin https://Datata1:${{ secrets.ACCESS_TOKEN }}@$REMOTE_URL
             
             # Push changes
             echo $REMOTE_URL

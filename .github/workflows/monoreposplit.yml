@@ -1,4 +1,4 @@
-name: Split Repository
+name: Split Subfolders and Push
 
 on:
   push:
@@ -6,42 +6,30 @@ on:
       - main
 
 jobs:
-  split_repository:
+  split-and-push:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Set up Git
         run: |
           git config --global user.email "jan-david.wiederstein@codesphere.com"
           git config --global user.name "Datata1"
-
-      - name: Create or update repositories
+      
+      - name: List subfolders
         run: |
-          for folder in */; do
-            folder=${folder%*/}
-            repo_name="${folder}"
-            
-            # Überprüfen, ob das Repository bereits existiert
-            if gh repo view $repo_name &> /dev/null; then
-              echo "Repository $repo_name already exists"
-            else
-              echo "Creating repository $repo_name"
-              # Neues Repository erstellen
-              gh repo create $repo_name --private --confirm --default-branch main
-            fi
-            
-            # In den Ordner wechseln, Inhalt kopieren und in neues Repository pushen
-            cp -r $folder temp_folder
-            cd temp_folder
-            git init
-            git remote add origin "https://github.com/codesphere-community/${repo_name}.git"
-            git add .
-            git commit -m "Initial commit"
+          find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \; > subfolders.txt
+      
+      - name: Process subfolders
+        run: |
+          while IFS= read -r subfolder; do
+            REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
+            git filter-repo --subdirectory-filter "$subfolder"
+            git remote add origin "$REMOTE_URL"
             git push -u origin main
-            cd ..
-            rm -rf temp_folder
-          done
+          done < subfolders.txt
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+

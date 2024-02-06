@@ -30,28 +30,35 @@ jobs:
       - name: Process subfolders
         run: |
           while IFS= read -r subfolder; do
-            REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
+            # Clone the templates repository
+            git clone https://github.com/codesphere-community/templates
+            
+            # Navigate to the subfolder
+            cd templates
+            
+            # Apply git-filter-repo
+            ./git-filter-repo --subdirectory-filter "$subfolder"
             
             # Check if repository already exists
+            REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "$REMOTE_URL")
+            
             if [ $RESPONSE -eq 404 ]; then
               # Repository does not exist, create it
               curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d "{\"name\":\"${subfolder}\",\"private\":false}" "https://api.github.com/user/repos"
-              git clone "$REMOTE_URL"
-            else
-              # Repository already exists, skip cloning
-              echo "Repository $REMOTE_URL already exists, skipping cloning."
             fi
             
-            cd "$subfolder"
-
-            # Apply git-filter-repo
-            ../git-filter-repo --subdirectory-filter "$subfolder"
-            
-            # Add remote origin and push changes
+            # Initialize new repository
             git remote add origin "$REMOTE_URL"
+            
+            # Push changes
+            git add .
+            git commit -m "Extracted $subfolder"
             git push -u origin main
+            
+            # Clean up repository
             cd ..
+            
           done < subfolders.txt
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

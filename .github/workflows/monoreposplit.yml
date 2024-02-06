@@ -32,7 +32,7 @@ jobs:
             dir=${dir#*/}
             # Überprüfe, ob das Verzeichnis ein Git-Repository ist
             if [ ! -d "$dir/.git" ]; then
-              # Erstelle ein neues Repository in der Organisation
+              # Erstelle ein neues Repository in der Organisation, wenn es noch nicht existiert
               curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" -d '{"name": "'"$dir"'"}' https://api.github.com/orgs/codesphere-community/repos
               cd $dir
               git init

@@ -26,8 +26,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          NAME = 'Datata1'
-          MAIL = 'jdwiederstein01@gmail.com'
+          NAME='Datata1'
+          MAIL='jdwiederstein01@gmail.com'
           git config --global user.email $MAIL
           git config --global user.name $NAME
       

@@ -26,7 +26,7 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "jan-david.wiederstein@codesphere.com"
+          git config --global user.email "jdwiederstein01@gmail.com"
           git config --global user.name "Datata1"
       
       - name: List subfolders

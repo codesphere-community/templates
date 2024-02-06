@@ -31,6 +31,7 @@ jobs:
       - name: List subfolders
         run: |
           find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \; > subfolders.txt
+          cat subfolders.txt
       
       - name: Process subfolders
         run: |
@@ -47,7 +48,7 @@ jobs:
             ## Check if repository already exists
             REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "$REMOTE_URL")
-            echo RESPONSE
+            echo $RESPONSE
             
             if [ $RESPONSE -eq 404 ]; then
               # Repository does not exist, create it using GitHub CLI
@@ -60,6 +61,7 @@ jobs:
             # Push changes
             git add .
             git commit -m "Extracted $subfolder"
+            echo a
             git push -u origin main
             
             # Clean up repository

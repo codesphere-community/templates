@@ -64,9 +64,13 @@ jobs:
             # Push changes
             echo $REMOTE_URL
             git push -u origin main
+
+            ls 
             
             # Clean up repository
             cd ..
+
+            ls
             
           done < subfolders.txt
         env:

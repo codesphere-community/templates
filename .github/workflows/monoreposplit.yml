@@ -31,8 +31,11 @@ jobs:
         run: |
           while IFS= read -r subfolder; do
             REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
-            git filter-repo --subdirectory-filter "$subfolder"
+            ./git-filter-repo --subdirectory-filter "$subfolder"
+            git init
             git remote add origin "$REMOTE_URL"
+            git add .
+            git commit -m "Extracted $subfolder"
             git push -u origin main
           done < subfolders.txt
         env:

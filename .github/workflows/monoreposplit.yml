@@ -26,8 +26,10 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "jdwiederstein01@gmail.com"
-          git config --global user.name "Datata1"
+          NAME = 'Datata1'
+          MAIL = 'jdwiederstein01@gmail.com'
+          git config --global user.email $MAIL
+          git config --global user.name $NAME
       
       - name: List subfolders
         run: |
@@ -47,7 +49,7 @@ jobs:
             git-filter-repo --subdirectory-filter "$subfolder"
             
             ## Check if repository already exists
-            REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
+            REMOTE_URL="github.com/codesphere-community/${subfolder}.git"
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -L "$REMOTE_URL")
             echo $RESPONSE
             
@@ -57,7 +59,7 @@ jobs:
             fi
             
             # Initialize new repository
-            git remote add origin "$REMOTE_URL"
+            git remote set-url origin https://$NAME:${{ secrets.ACCESS_TOKEN }}@$REMOTE_URL
             
             # Push changes
             echo $REMOTE_URL

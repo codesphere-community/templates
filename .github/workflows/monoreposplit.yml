@@ -21,7 +21,6 @@ jobs:
           
       - name: test
         run: |
-          git-filter-repo --analyze # Test if git-filter-repo is in the $PATH
           ls 
           pwd
 
@@ -59,6 +58,7 @@ jobs:
             
             # Initialize new repository
             git remote add origin "$REMOTE_URL"
+            echo b
             
             # Push changes
             git add .

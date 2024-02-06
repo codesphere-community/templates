@@ -13,6 +13,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Set up Git Identity
+        run: |
+          git config --global user.email "jan-david.wiederstein@codesphere.com"
+          git config --global user.name "Datata1"
+
       - name: List Directories
         run: |
           # Liste alle Ordner im Monorepo auf

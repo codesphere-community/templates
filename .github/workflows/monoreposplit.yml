@@ -1,26 +1,42 @@
-name: Monorepo Split
+name: Split Repository
+
 on:
   push:
     branches:
-      - main  # oder den Namen deiner Hauptbranch
+      - main
 
 jobs:
-  monorepo-split:
-    name: Monorepo Split Job
+  split_repository:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      
-      - name: Run Monorepo Split Action
-        uses: danharrin/monorepo-split-github-action@v2.3.0
-        with:
-          package_directory: './'
-          repository_host: github.com
-          repository_organization: 'codesphere-community'
-          repository_name: 'templates'
-          branch: 'main'
-          user_email: 'jan-david.wiederstein@codesphere.com'
-          user_name: 'Datata1'
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create or update repositories
+        run: |
+          for folder in */; do
+            folder=${folder%*/}
+            repo_name="${folder}"
+            
+            # Überprüfen, ob das Repository bereits existiert
+            if gh repo view $repo_name &> /dev/null; then
+              echo "Repository $repo_name already exists"
+            else
+              echo "Creating repository $repo_name"
+              # Neues Repository erstellen
+              gh repo create $repo_name --private --confirm
+            fi
+            
+            # In den Ordner wechseln, Inhalt kopieren und in neues Repository pushen
+            cp -r $folder temp_folder
+            cd temp_folder
+            git init
+            git remote add origin "https://github.com/codesphere-community/${repo_name}.git"
+            git add .
+            git commit -m "Initial commit"
+            git push -u origin main
+            cd ..
+            rm -rf temp_folder
+          done
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

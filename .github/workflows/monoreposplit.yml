@@ -69,9 +69,8 @@ jobs:
             
             # Clean up repository
             cd ..
+            rm -rf templates
 
-            ls
-            
           done < subfolders.txt
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

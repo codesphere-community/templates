@@ -29,7 +29,7 @@ jobs:
             else
               echo "Creating repository $repo_name"
               # Neues Repository erstellen
-              gh repo create $repo_name --private --confirm
+              gh repo create $repo_name --private --confirm --default-branch main
             fi
             
             # In den Ordner wechseln, Inhalt kopieren und in neues Repository pushen

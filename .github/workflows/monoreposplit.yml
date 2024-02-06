@@ -57,6 +57,7 @@ jobs:
             git remote add origin "$REMOTE_URL"
             
             # Push changes
+            git init
             git add .
             git commit -m "Extracted $subfolder"
             git push -u origin main

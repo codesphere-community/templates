@@ -1,0 +1,33 @@
+name: 'Split monorepo'
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        package: [ 'Java', 'angular', 'flask', 'jupyter', 'llama2API', 'llama2chat', 'n8n', 'nextjs', 'nodejs', 'poenix', 'react', 'stable-diffusion', 'svelte', 'text-generation-web-ui', 'tradingbot', 'vue']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Split package ${{ matrix.package }}
+        uses: "claudiodekker/splitsh-action@v1.0.0"
+        env:
+          GITHUB_TOKEN: ${{ secrets.MONOREPO_SPLITTER_PERSONAL_ACCESS_TOKEN }}
+        with:
+          prefix: "./${{ matrix.package }}"
+          remote: "https://github.com/codesphere-community/${{ matrix.package }}.git"
+          reference: "${{ github.ref_name }}"
+          as_tag: "${{ startsWith(github.ref, 'refs/tags/') }}"

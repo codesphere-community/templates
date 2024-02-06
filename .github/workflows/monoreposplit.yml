@@ -30,7 +30,7 @@ jobs:
           while IFS= read -r dir; do
             # Extrahiere Ordnernamen
             dir=${dir#*/}
-            # Überprüfe, ob das Repository bereits existiert
+            # Überprüfe, ob das Verzeichnis ein Git-Repository ist
             if [ ! -d "$dir/.git" ]; then
               # Erstelle ein neues Repository in der Organisation
               curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" -d '{"name": "'"$dir"'"}' https://api.github.com/orgs/codesphere-community/repos
@@ -50,3 +50,4 @@ jobs:
               cd ..
             fi
           done < directories.txt
+

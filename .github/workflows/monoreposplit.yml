@@ -1,33 +1,47 @@
-name: 'Split monorepo'
+name: Sync Monorepo with Individual Repos
 
 on:
   push:
     branches:
-      - main
-    tags:
-      - 'v*'
+      - main  # Anpassen, falls Ihre Hauptbranch einen anderen Namen hat
 
 jobs:
-  split:
+  sync:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        package: [ 'Java', 'angular', 'flask', 'jupyter', 'llama2API', 'llama2chat', 'n8n', 'nextjs', 'nodejs', 'poenix', 'react', 'stable-diffusion', 'svelte', 'text-generation-web-ui', 'tradingbot', 'vue']
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      - name: Split package ${{ matrix.package }}
-        uses: "claudiodekker/splitsh-action@v1.0.0"
-        env:
-          GITHUB_TOKEN: ${{ secrets.MONOREPO_SPLITTER_PERSONAL_ACCESS_TOKEN }}
-        with:
-          prefix: "./${{ matrix.package }}"
-          remote: "https://github.com/codesphere-community/${{ matrix.package }}.git"
-          reference: "${{ github.ref_name }}"
-          as_tag: "${{ startsWith(github.ref, 'refs/tags/') }}"
+      - name: List Directories
+        run: |
+          # Liste alle Ordner im Monorepo auf
+          dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
+          echo "$dirs" > directories.txt
+
+      - name: Sync Repositories
+        run: |
+          # Schleife über alle Ordner im Monorepo
+          while IFS= read -r dir; do
+            # Extrahiere Ordnernamen
+            dir=${dir#*/}
+            # Überprüfe, ob das Repository bereits existiert
+            if [ ! -d "$dir/.git" ]; then
+              # Erstelle ein neues Repository in der Organisation
+              curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" -d '{"name": "'"$dir"'"}' https://api.github.com/orgs/codesphere-community/repos
+              cd $dir
+              git init
+              git add .
+              git commit -m "Initial commit"
+              git remote add origin git@github.com:your-organization/$dir.git
+              git push -u origin main
+              cd ..
+            else
+              # Aktualisiere das bestehende Repository
+              cd $dir
+              git add .
+              git commit -m "Update from monorepo"
+              git push origin main
+              cd ..
+            fi
+          done < directories.txt

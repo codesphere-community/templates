@@ -44,20 +44,20 @@ jobs:
             # Apply git-filter-repo
             ../git-filter-repo --subdirectory-filter "$subfolder"
             
-            # Check if repository already exists
+            ## Check if repository already exists
             REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "$REMOTE_URL")
+            echo RESPONSE
             
             if [ $RESPONSE -eq 404 ]; then
-              # Repository does not exist, create it
-              curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d "{\"name\":\"${subfolder}\",\"private\":false}" "https://api.github.com/user/repos"
+              # Repository does not exist, create it using GitHub CLI
+              gh repo create codesphere-community/${subfolder} --public
             fi
             
             # Initialize new repository
             git remote add origin "$REMOTE_URL"
             
             # Push changes
-            git init
             git add .
             git commit -m "Extracted $subfolder"
             git push -u origin main

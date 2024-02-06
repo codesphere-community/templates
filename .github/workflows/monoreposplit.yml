@@ -22,3 +22,5 @@ jobs:
           branch: 'main'
           user_email: 'jan-david.wiederstein@codesphere.com'
           user_name: 'Datata1'
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

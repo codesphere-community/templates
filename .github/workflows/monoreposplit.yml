@@ -47,7 +47,7 @@ jobs:
             
             ## Check if repository already exists
             REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
-            RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "$REMOTE_URL")
+            RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -L "$REMOTE_URL")
             echo $RESPONSE
             
             if [ $RESPONSE -eq 404 ]; then

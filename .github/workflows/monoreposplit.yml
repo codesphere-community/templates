@@ -1,4 +1,4 @@
-name: Split Subfolders and Push
+name: Split Subfolders and Pusha
 
 on:
   push:

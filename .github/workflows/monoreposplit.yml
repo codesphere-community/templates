@@ -61,9 +61,7 @@ jobs:
             echo b
             
             # Push changes
-            git add .
             echo c
-            git commit -m "Extracted $subfolder"
             echo a
             git push -u origin main
             

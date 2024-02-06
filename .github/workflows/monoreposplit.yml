@@ -10,7 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "jan-david.wiederstein@codesphere.com"
+          git config --global user.name "Datata1"
 
       - name: Create or update repositories
         run: |

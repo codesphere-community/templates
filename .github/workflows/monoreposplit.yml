@@ -31,12 +31,25 @@ jobs:
         run: |
           while IFS= read -r subfolder; do
             REMOTE_URL="https://github.com/codesphere-community/${subfolder}.git"
-            ./git-filter-repo --subdirectory-filter "$subfolder"
-            git init
+            
+            # Check if repository already exists
+            RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "$REMOTE_URL")
+            if [ $RESPONSE -eq 404 ]; then
+              # Repository does not exist, create it
+              curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d "{\"name\":\"${subfolder}\",\"private\":false}" "https://api.github.com/user/repos"
+            fi
+
+            # Clone the repository
+            git clone "$REMOTE_URL" || true
+            cd "$subfolder"
+
+            # Apply git-filter-repo
+            ../git-filter-repo --subdirectory-filter "$subfolder"
+            
+            # Add remote origin and push changes
             git remote add origin "$REMOTE_URL"
-            git add .
-            git commit -m "Extracted $subfolder"
             git push -u origin main
+            cd ..
           done < subfolders.txt
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

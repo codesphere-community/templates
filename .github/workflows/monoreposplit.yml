@@ -1,4 +1,4 @@
-            - name: Monorepo Split
+name: Monorepo Split
   # You may pin to the exact commit or the version.
   # uses: danharrin/monorepo-split-github-action@ac9845270ef47266435b4f124b133a323619e738
   uses: danharrin/monorepo-split-github-action@v2.3.0

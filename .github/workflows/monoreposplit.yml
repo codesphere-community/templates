@@ -58,11 +58,9 @@ jobs:
             
             # Initialize new repository
             git remote add origin "$REMOTE_URL"
-            echo b
             
             # Push changes
-            echo c
-            echo a
+            echo $REMOTE_URL
             git push -u origin main
             
             # Clean up repository

@@ -1,53 +1,22 @@
-name: Sync Monorepo with Individual Repos
-
-on:
-  push:
-    branches:
-      - main  # Anpassen, falls Ihre Hauptbranch einen anderen Namen hat
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up Git Identity
-        run: |
-          git config --global user.email "jan-david.wiederstein@codesphere.com"
-          git config --global user.name "Datata1"
-
-      - name: List Directories
-        run: |
-          # Liste alle Ordner im Monorepo auf
-          dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
-          echo "$dirs" > directories.txt
-
-      - name: Sync Repositories
-        run: |
-          # Schleife über alle Ordner im Monorepo
-          while IFS= read -r dir; do
-            # Extrahiere Ordnernamen
-            dir=${dir#*/}
-            # Überprüfe, ob das Verzeichnis ein Git-Repository ist
-            if [ ! -d "$dir/.git" ]; then
-              # Erstelle ein neues Repository in der Organisation, wenn es noch nicht existiert
-              curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" -d '{"name": "'"$dir"'"}' https://api.github.com/orgs/codesphere-community/repos
-              cd $dir
-              git init
-              git add .
-              git commit -m "Initial commit"
-              git remote add origin git@github.com:codesphere-community/$dir.git
-              git push -u origin main
-              cd ..
-            else
-              # Aktualisiere das bestehende Repository
-              cd $dir
-              git add .
-              git commit -m "Update from monorepo"
-              git push origin main
-              cd ..
-            fi
-          done < directories.txt
-
+            - name: Monorepo Split
+  # You may pin to the exact commit or the version.
+  # uses: danharrin/monorepo-split-github-action@ac9845270ef47266435b4f124b133a323619e738
+  uses: danharrin/monorepo-split-github-action@v2.3.0
+  with:
+    # Local package directory
+    package_directory: './'
+    # Host
+    repository_host: # optional, default is github.com
+    # Remote organization
+    repository_organization: 'codesphere-community'
+    # Remote repository
+    repository_name: 'templates'
+    # Git branch
+    branch: # default is main
+    # [Optional] Tag to be released
+    tag: # optional
+    # Git User Email
+    user_email: 'jan-david.wiederstein@codesphere.com'
+    # Git User Name
+    user_name: 'Datata1'
+          

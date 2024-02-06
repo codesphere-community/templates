@@ -37,10 +37,12 @@ jobs:
             if [ $RESPONSE -eq 404 ]; then
               # Repository does not exist, create it
               curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d "{\"name\":\"${subfolder}\",\"private\":false}" "https://api.github.com/user/repos"
+              git clone "$REMOTE_URL"
+            else
+              # Repository already exists, skip cloning
+              echo "Repository $REMOTE_URL already exists, skipping cloning."
             fi
-
-            # Clone the repository
-            git clone "$REMOTE_URL" || true
+            
             cd "$subfolder"
 
             # Apply git-filter-repo
@@ -53,4 +55,3 @@ jobs:
           done < subfolders.txt
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-

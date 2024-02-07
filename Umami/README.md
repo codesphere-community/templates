@@ -1,5 +1,10 @@
 # Install Umami on Codesphere
-This project was built as a part of Codesphere's Spring Challenge where everyone who participates wins exciting prizes.
+Hey folks,
+Have you ever wondered whether you can host your own Google Analytics alternative (because Google collects a lot of data from it)?
+
+If yes, you’re on the very correct blog post!
+
+Let’s dive into how we can deploy our own Analytics service using Codesphere Cloud!
 
 ## Steps for installing Umami on Codesphere.
 1. Signup On Codesphere — https://codesphere.com/

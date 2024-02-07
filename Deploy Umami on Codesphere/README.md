@@ -1,28 +1,5 @@
 # Install Umami on Codesphere
-
-## Links
-
-- Blog Posts:
-  - Dev.to - https://dev.to/sancho1952007/host-your-own-google-analytics-alternative-using-umami-and-codesphere-2jnk
-  - Medium - https://medium.com/@sanchogodinho/host-your-own-google-analytics-alternative-using-umami-and-codesphere-2353edf3a89a
-
-- Workspace URL: https://53867-3000.2.codesphere.com/dashboard
-
-## Checklist
-- [x] My project has been thoroughly tested and is fully functional.
-- [x] The repository for my project includes a `ci.yml` file (Refer to [CodeSphere CI Pipelines](https://docs.codesphere.com/getting-started/ci-pipelines)).
-- [x] The blog post about my project has been published.
-- [x] All workspaces for this project are deployed on Codesphere using the CI pipeline.
-- [x] My app is persistently installed in a workspace (all components are installed and configured somewhere below the `/home/user/app` path).
-- [x] My pull request is well-written and clear.
-
 This project was built as a part of Codesphere's Spring Challenge where everyone who participates wins exciting prizes.
-
-### Motivation
-Killing the dominance of big tech companies who read our user's data by switching to self-hosted Open Source alternatives like Umami.
-
-### What I have achieved
-Installing Umami, a free Open Source Analytics tool for websites on a low-cost hosting platform, Codesphere. This will keep your website analytics and user's data more secure and is completely owned by you.
 
 ## Steps for installing Umami on Codesphere.
 1. Signup On Codesphere — https://codesphere.com/

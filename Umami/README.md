@@ -2,7 +2,7 @@
 Hey folks,  
 So, have you ever wondered whether you can host your own Google Analytics alternative (because Google collects a lot of data from it)?
 
-If yes, you’re on the very correct blog post!
+If yes, you’re on the very correct repository!
 
 Let’s dive into how we can deploy our own Analytics service using Codesphere Cloud!
 

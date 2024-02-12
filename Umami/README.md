@@ -47,6 +47,8 @@ You're ready to now use it on your site!
 
 Also, If the restart fails in the future, Follow step 9, then directly go to the Run section, and then click the "Run" button.
 
+Here's the tutorial if you help with the installation: https://www.youtube.com/watch?v=DpkkjibjPpo
+
 ## Steps for adding Umami to your website.
 1. Login with the credentials (if unchanged, follow step 12's credentials)
 2. Click on "Settings" on the header.

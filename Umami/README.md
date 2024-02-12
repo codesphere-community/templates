@@ -64,4 +64,21 @@ Done, this should display your Website's statistics!
 
 Just keep in mind to change your Umami password to prevent unauthorized access to your analytics service!
 
+
+## A/B testing with Codesphere & Umami.
+A/B testing is a statistical method used in marketing and product development to compare two versions, A and B, of a webpage, email, or other content to determine which performs better. The goal is to identify changes that positively impact user engagement, conversion rates, or other key metrics. Randomly assigned groups of users are exposed to either version, and their behavior is analyzed to assess the effectiveness of each variant. By isolating variables and measuring outcomes, A/B testing helps businesses make data-driven decisions, optimize user experiences, and refine strategies for optimal performance in areas such as website design, marketing campaigns, and product features.
+
+Let's see how to do this using Codesphere's advanced functionalities!
+1. Create 2 workspaces for your A/B testing instances.
+2. Copy and paste the tracking code in the &lt;head&gt; tag of the website paths that you want to be tracked.
+3. Create a &lt;script&gt; tag.
+4. Inside the created &lt;script&gt; tag, put the code: umami.track('Website &lt;A/B&gt;');  
+Change the A/B based on which instance you're on or put any value that differentiates between the two websites. In my case, I put 'A/B 1' and 'A/B 2'.
+5. Go to the domain section in Codesphere and [register your domain](https://docs.codesphere.com/getting-started/custom-domains).
+6. Select the two A/B workspaces that you want to test on that domain from the "Workspaces" dropdown. This will now automatically display the two versions of your website.
+7. To view your results, go to the Umami dashboard, click on "View Details →" and scroll to the bottom.
+8. Your events should be displayed in the events section.
+   ![image](https://github.com/sancho1952007/templates/assets/73981314/3da24d97-7a02-4474-8522-d919dc449664)
+
+
 Thanks for taking a look 😁

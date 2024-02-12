@@ -1,15 +1,9 @@
 prepare:
   steps:
-    - name: Install n
-      command: sudo npm i -g n
     - name: Install latest nodejs version
       command: sudo n stable
     - name: Delete older nodejs version because it clashes in the Run CI command.
       command: sudo n prune
-    - name: install latest NPM
-      command: sudo npm i -g npm
-    - name: Install Yarn
-      command: sudo npm i -g yarn
     - name: Clone the repository
       command: '[ -d "umami" ] || git clone
         https://github.com/umami-software/umami.git umami'

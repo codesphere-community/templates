@@ -69,15 +69,18 @@ jobs:
             git push -u origin main
 
             ls 
-
+            
+            # Clean up repository
+            cd ..
+            
             # Remove self as contributor
             echo "Subfolder: $subfolder"
             echo "Delete self as collaborator command: gh api -X DELETE /repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
             gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
 
             # Anzeigen der Beitragenden für einen bestimmten Ordner und Schreiben in eine Datei
-            gh pr view --json commits --jq ".commits[] | select(.path | startswith($subfolder)) | .author.user.login" | sort | uniq > contributors.txt
-           
+            gh pr view --json commits --jq ".commits[] | select(.path | startswith("templates/$subfolder")) | .author.user.login" | sort | uniq > contributors.txt
+            ls
             echo "contributors.txt:"
             cat contributors.txt
             while IFS= read -r contributor; do
@@ -86,8 +89,7 @@ jobs:
             done < contributors.txt
             
 
-            # Clean up repository
-            cd ..
+            rm -rf contributors.txt
             rm -rf templates
 
           done < subfolders.txt

@@ -70,7 +70,7 @@ jobs:
             done < contributors.txt
 
             # Clean up repository
-            cd ../..
+            cd ..
             rm -rf templates
 
           done < subfolders.txt

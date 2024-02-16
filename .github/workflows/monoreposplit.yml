@@ -83,7 +83,7 @@ jobs:
             while IFS= read -r contributor; do
               echo "Adding $contributor as collaborator..."
               gh api -X PUT "/repos/codesphere-community/$subfolder/collaborators/$contributor"
-            done < past_contributors.txt
+            done < contributors.txt
             
 
             # Clean up repository

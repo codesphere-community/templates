@@ -38,7 +38,7 @@ jobs:
             git clone https://github.com/codesphere-community/templates
             
             # Navigate to the subfolder
-            cd templates/$subfolder
+            cd templates
 
             # Apply git-filter-repo
             git-filter-repo --subdirectory-filter "$subfolder"

@@ -39,15 +39,14 @@ jobs:
             
             # Navigate to the subfolder
             cd templates
-            ls
-            echo $subfolder
-
+            
             # Apply git-filter-repo
             git-filter-repo --subdirectory-filter "$subfolder"
             
             ## Check if repository already exists
             REMOTE_URL="github.com/codesphere-community/${subfolder}.git"
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -L "$REMOTE_URL")
+            echo $RESPONSE
             
             if [ $RESPONSE -eq 404 ]; then
               # Repository does not exist, create it using GitHub CLI
@@ -58,20 +57,23 @@ jobs:
             git remote add origin https://Datata1:${{ secrets.ACCESS_TOKEN }}@$REMOTE_URL
             
             # Push changes
+            echo $REMOTE_URL
             git push -u origin main
 
-            # Remove self as contributor
-            gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
+            ls 
+            
+            
 
-            # Anzeigen der Beitragenden für einen bestimmten Ordner und Schreiben in eine Datei
-            git shortlog -sne > contributors.txt
-            ls
-            cat contributors.txt
-           
+            # Remove self as contributor
+            echo '$subfolder'
+            echo '/repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}'
+            gh api -X DELETE /repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}
+            
+            # Add past contributors as collaborators
+            git log --pretty=format:"%an" -- "$subfolder/" | sort -u > past_contributors.txt
             while IFS= read -r contributor; do
-              echo "Adding $contributor as collaborator..."
-              gh api -X PUT "/repos/codesphere-community/$subfolder/collaborators/$contributor"
-            done < contributors.txt
+              gh api -X PUT /repos/codesphere-community/${subfolder}/collaborators/$contributor
+            done < past_contributors.txt
 
             # Clean up repository
             cd ..

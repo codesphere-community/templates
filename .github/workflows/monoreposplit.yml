@@ -68,8 +68,8 @@ jobs:
 
             # Remove self as contributor
             echo $subfolder
-            echo '/repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}'
-            gh api -X DELETE /repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}
+            echo '/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}'
+            gh api -X DELETE /repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}
             
             # Add past contributors as collaborators
             git log --pretty=format:"%an" -- "$subfolder/" | sort -u > past_contributors.txt

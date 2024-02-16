@@ -62,23 +62,10 @@ jobs:
 
             ls 
             
-
-            # Remove self as contributor
-            echo "$subfolder"
-            echo "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
-            gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
-            
-            # Add past contributors as collaborators
-            git shortlog -s -n -- $subfolder > contributors.txt
-            cat contributors.txt
-            while IFS= read -r contributor; do
-              gh api -X PUT "/repos/codesphere-community/$subfolder/collaborators/$contributor"
-            done < contributors.txt
-
             # Clean up repository
             cd ..
-            ls
             rm -rf templates
+
 
           done < subfolders.txt
 

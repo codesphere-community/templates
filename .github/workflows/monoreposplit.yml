@@ -79,7 +79,7 @@ jobs:
             gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
 
             # Anzeigen der Beitragenden für einen bestimmten Ordner und Schreiben in eine Datei
-            echo "gh pr view --json commits --jq '.commits[] | select(.path | startswith("templates/$subfolder')) | .author.user.login" | sort | uniq > contributors.txt"
+            echo "gh pr view --json commits --jq '.commits[] | select(.path | startswith("templates/$subfolder")) | .author.user.login" | sort | uniq > contributors.txt'
             gh pr view --json commits --jq ".commits[] | select(.path | startswith("templates/$subfolder")) | .author.user.login" | sort | uniq > contributors.txt
             ls
             echo "contributors.txt:"

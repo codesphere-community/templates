@@ -44,14 +44,17 @@ jobs:
             git clone https://github.com/codesphere-community/templates
             
             # Navigate to the subfolder
-            cd templates/$subfolder
+            cd templates
 
+            echo $subfolder
+            
             # Apply git-filter-repo
             git-filter-repo --subdirectory-filter "$subfolder"
             
             ## Check if repository already exists
             REMOTE_URL="github.com/codesphere-community/${subfolder}.git"
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -L "$REMOTE_URL")
+            echo $RESPONSE
             
             if [ $RESPONSE -eq 404 ]; then
               # Repository does not exist, create it using GitHub CLI
@@ -69,7 +72,6 @@ jobs:
 
             # Anzeigen der Beitragenden für einen bestimmten Ordner und Schreiben in eine Datei
             git shortlog -sne > contributors.txt
-            cat contributors.txt
            
             while IFS= read -r contributor; do
               echo "Adding $contributor as collaborator..."

@@ -39,6 +39,7 @@ jobs:
             
             # Navigate to the subfolder
             cd templates
+            ls
 
             # Apply git-filter-repo
             git-filter-repo --subdirectory-filter "$subfolder"
@@ -63,6 +64,8 @@ jobs:
 
             # Anzeigen der Beitragenden für einen bestimmten Ordner und Schreiben in eine Datei
             git shortlog -sne > contributors.txt
+            ls
+            cat contributors.txt
            
             while IFS= read -r contributor; do
               echo "Adding $contributor as collaborator..."

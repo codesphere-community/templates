@@ -1,6 +1,6 @@
 # Title: PDF Merge Tool with Angular
 
-![Template Preview](https://raw.githubusercontent.com/codesphere-community/angular/main/cover.webp)
+![Template Preview](https://raw.githubusercontent.com/codesphere-community/angular/main/angular.webp)
 
 ## Contributor
 

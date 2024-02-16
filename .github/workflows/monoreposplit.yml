@@ -67,6 +67,7 @@ jobs:
             rm -rf templates
 
             # Remove self as contributor
+            echo '$subfolder'
             echo '/repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}'
             gh api -X DELETE /repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}
             

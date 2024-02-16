@@ -60,11 +60,6 @@ jobs:
             echo $REMOTE_URL
             git push -u origin main
 
-
-            git shortlog -n -s -- ./ | awk '{print $2}' | uniq > contributors.txt
-            ls
-            echo "$(<contributors.txt )"
-            ls
             
             # Clean up repository
             cd ..

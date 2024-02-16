@@ -62,9 +62,7 @@ jobs:
 
             ls 
             
-            # Clean up repository
-            cd ..
-            rm -rf templates
+            
 
             # Remove self as contributor
             echo '$subfolder'
@@ -76,6 +74,10 @@ jobs:
             while IFS= read -r contributor; do
               gh api -X PUT /repos/codesphere-community/${subfolder}/collaborators/$contributor
             done < past_contributors.txt
+
+            # Clean up repository
+            cd ..
+            rm -rf templates
 
           done < subfolders.txt
 

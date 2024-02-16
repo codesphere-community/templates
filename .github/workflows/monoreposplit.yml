@@ -19,11 +19,6 @@ jobs:
           chmod +x git-filter-repo
           sudo mv git-filter-repo /usr/local/bin/ # Move git-filter-repo to a directory in the $PATH
           
-      - name: test
-        run: |
-          ls 
-          pwd
-
       - name: Set up Git
         run: |
           NAME='Datata1'
@@ -71,6 +66,16 @@ jobs:
             cd ..
             rm -rf templates
 
+            # Remove self as contributor
+            gh api -X DELETE /repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}
+            
+            # Add past contributors as collaborators
+            git log --pretty=format:"%an" -- "$subfolder/" | sort -u > past_contributors.txt
+            while IFS= read -r contributor; do
+              gh api -X PUT /repos/codesphere-community/${subfolder}/collaborators/$contributor
+            done < past_contributors.txt
+
           done < subfolders.txt
+
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

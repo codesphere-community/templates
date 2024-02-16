@@ -70,6 +70,7 @@ jobs:
             gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
             
             # Add past contributors as collaborators
+            git log --pretty=format:"%an" -- "$subfolder"
             git log --pretty=format:"%an" -- "$subfolder" | sort -u > past_contributors.txt
             echo "past_contributors.txt:"
             cat past_contributors.txt

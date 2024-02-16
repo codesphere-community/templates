@@ -60,9 +60,9 @@ jobs:
             echo $REMOTE_URL
             git push -u origin main
 
-            ls 
 
-            gh shortlog -n -s -- ./ | awk '{print $2}' | uniq > contributors.txt
+            git shortlog -n -s -- ./ | awk '{print $2}' | uniq > contributors.txt
+            ls
             cat contributors.txt
             
             # Clean up repository

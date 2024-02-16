@@ -13,6 +13,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Installiere jq
+        run: sudo apt-get update && sudo apt-get install jq -y
+
+      - name: Anzeigen von jq-Version
+        run: jq --version
+
       - name: Download git-filter-repo
         run: |
           curl -O https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo
@@ -68,11 +74,12 @@ jobs:
             echo "Subfolder: $subfolder"
             echo "Delete self as collaborator command: gh api -X DELETE /repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
             gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
-            
-           # Add past contributors as collaborators
-            git log --pretty=format:"%an" -- "templates/$subfolder" | sort -u > past_contributors.txt
-            echo "past_contributors.txt:"
-            cat past_contributors.txt
+
+            # Anzeigen der Beitragenden für einen bestimmten Ordner und Schreiben in eine Datei
+            gh pr view --json commits --jq '.commits[] | select(.path | startswith("$subfolder")) | .author.user.login' | sort | uniq > contributors.txt
+           
+            echo "contributors.txt:"
+            cat contributors.txt
             while IFS= read -r contributor; do
               echo "Adding $contributor as collaborator..."
               gh api -X PUT "/repos/codesphere-community/$subfolder/collaborators/$contributor"

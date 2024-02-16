@@ -68,14 +68,14 @@ jobs:
 
             # Remove self as contributor
             echo $subfolder
-            echo '/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}'
-            gh api -X DELETE /repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}
+            echo "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
+            gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
             
             # Add past contributors as collaborators
-            git log --pretty=format:"%an" -- "$subfolder/" | sort -u > past_contributors.txt
+            git log --pretty=format:"%an" -- "$subfolder" | sort -u > past_contributors.txt
             echo past_contributors.txt
             while IFS= read -r contributor; do
-              gh api -X PUT /repos/codesphere-community/$subfolder/collaborators/$contributor
+              gh api -X PUT "/repos/codesphere-community/$subfolder/collaborators/$contributor"
             done < past_contributors.txt
 
             # Clean up repository

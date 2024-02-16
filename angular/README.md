@@ -36,17 +36,4 @@ Brief description of what this template does and its purpose.
 
 Describe how to install and use the template on Codesphere
 
- ## Template Categories
-
-- Category 1
-- Category 2
-- Category 3
-
-## Blogarticle Link
-
-[Title of the blogpost](https://codesphere.com/articles/angular-template)
-
-# Smallest possible workspace plan
-
-- free
 

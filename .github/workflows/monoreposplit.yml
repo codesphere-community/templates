@@ -39,6 +39,8 @@ jobs:
             
             # Navigate to the subfolder
             cd templates
+
+            echo $subfolder
             
             # Apply git-filter-repo
             git-filter-repo --subdirectory-filter "$subfolder"
@@ -65,7 +67,7 @@ jobs:
             
 
             # Remove self as contributor
-            echo '$subfolder'
+            echo $subfolder
             echo '/repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}'
             gh api -X DELETE /repos/codesphere-community/${subfolder}/collaborators/${{ github.actor }}
             

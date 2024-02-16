@@ -69,14 +69,13 @@ jobs:
             echo "Delete self as collaborator command: gh api -X DELETE /repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
             gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
             
-            # Add past contributors as collaborators
-            git log --pretty=format:"%an" -- "$subfolder"
-            git log --pretty=format:"%an" -- "$subfolder" | sort -u > past_contributors.txt
+           # Add past contributors as collaborators
+            git log --pretty=format:"%an" -- "templates/$subfolder" | sort -u > past_contributors.txt
             echo "past_contributors.txt:"
             cat past_contributors.txt
             while IFS= read -r contributor; do
               echo "Adding $contributor as collaborator..."
-              gh api -X PUT "/repos/codesphere-community/templates/$subfolder/collaborators/$contributor"
+              gh api -X PUT "/repos/codesphere-community/$subfolder/collaborators/$contributor"
             done < past_contributors.txt
             
 

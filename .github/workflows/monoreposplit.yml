@@ -61,9 +61,6 @@ jobs:
             git push -u origin main
 
             ls 
-
-            git shortlog -n -s -- ./ | awk '{print $2}' | uniq > contributors.txt
-            less contributors.txt
             
             # Clean up repository
             cd ..

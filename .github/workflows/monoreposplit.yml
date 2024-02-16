@@ -13,12 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Installiere jq
-        run: sudo apt-get update && sudo apt-get install jq -y
-
-      - name: Anzeigen von jq-Version
-        run: jq --version
-
       - name: Download git-filter-repo
         run: |
           curl -O https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo
@@ -79,7 +73,7 @@ jobs:
             done < contributors.txt
 
             # Clean up repository
-            cd ../..
+            cd ..
             rm -rf templates
 
           done < subfolders.txt

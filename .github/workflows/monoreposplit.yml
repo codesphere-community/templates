@@ -63,7 +63,7 @@ jobs:
             ls 
 
             git shortlog -n -s -- ./ | awk '{print $2}' | uniq > contributors.txt
-            cat contributors.txt
+            less contributors.txt
             
             # Clean up repository
             cd ..

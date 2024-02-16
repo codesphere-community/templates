@@ -44,17 +44,14 @@ jobs:
             git clone https://github.com/codesphere-community/templates
             
             # Navigate to the subfolder
-            cd templates
+            cd templates/$subfolder
 
-            echo $subfolder
-            
             # Apply git-filter-repo
             git-filter-repo --subdirectory-filter "$subfolder"
             
             ## Check if repository already exists
             REMOTE_URL="github.com/codesphere-community/${subfolder}.git"
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -L "$REMOTE_URL")
-            echo $RESPONSE
             
             if [ $RESPONSE -eq 404 ]; then
               # Repository does not exist, create it using GitHub CLI
@@ -65,32 +62,22 @@ jobs:
             git remote add origin https://Datata1:${{ secrets.ACCESS_TOKEN }}@$REMOTE_URL
             
             # Push changes
-            echo $REMOTE_URL
             git push -u origin main
 
-            ls 
-            
-            # Clean up repository
-            cd ..
-            
             # Remove self as contributor
-            echo "Subfolder: $subfolder"
-            echo "Delete self as collaborator command: gh api -X DELETE /repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
             gh api -X DELETE "/repos/codesphere-community/$subfolder/collaborators/${{ github.actor }}"
 
             # Anzeigen der Beitragenden für einen bestimmten Ordner und Schreiben in eine Datei
-            echo "gh pr view --json commits --jq '.commits[] | select(.path | startswith("templates/$subfolder")) | .author.user.login" | sort | uniq > contributors.txt'
-            gh pr view --json commits --jq ".commits[] | select(.path | startswith("templates/$subfolder")) | .author.user.login" | sort | uniq > contributors.txt
-            ls
-            echo "contributors.txt:"
+            git shortlog -sne > contributors.txt
             cat contributors.txt
+           
             while IFS= read -r contributor; do
               echo "Adding $contributor as collaborator..."
               gh api -X PUT "/repos/codesphere-community/$subfolder/collaborators/$contributor"
             done < contributors.txt
-            
 
-            rm -rf contributors.txt
+            # Clean up repository
+            cd ../..
             rm -rf templates
 
           done < subfolders.txt

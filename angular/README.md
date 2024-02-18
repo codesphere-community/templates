@@ -22,11 +22,6 @@
 
 Brief description of what this template does and its purpose.
 
-## Features
-
-- Feature 1
-- Feature 2
-- Feature 3
 
   ```python
   print('Hello, World!')

@@ -2,5 +2,6 @@
   "workspace": "free",
   "blogsrticle": "https://codesphere.com/articles/pdf-merger-with-angular",
   "Categories": ["Framework"],
-  "Contributors": ["Datata1"]
+  "Contributors": ["Datata1"],
+  "Title": "PDF Merge Tool with Angular"
 }

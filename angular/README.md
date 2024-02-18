@@ -2,21 +2,7 @@
 
 # PDF Merge Tool with Angular
 
-## Contributor
 
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
-- [Datata1](https://github.com/Datata1)
 
 ## Description
 

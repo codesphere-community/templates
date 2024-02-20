@@ -1,0 +1,9 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "Java": "https://codesphere.com/articles/java",
+  },
+  "Categories": ["Framework"],
+  "Contributors": ["Simon-Count"],
+  "Title": "Java Spring Boot Template"
+}

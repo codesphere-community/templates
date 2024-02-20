@@ -1,0 +1,10 @@
+{
+  "Workspace": "Pro",
+  "Links": {
+    "python-cpp-python": "https://github.com/abetlen/llama-cpp-python",
+    "Self-hosted vs API-based": "https://codesphere.com/articles/self-hosted-vs-api-based-llms"
+  },
+  "Categories": ["Application"],
+  "Contributors": ["Simon-Count"],
+  "Title": "Llama2 API"
+}

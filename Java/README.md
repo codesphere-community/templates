@@ -6,7 +6,7 @@ With Spring Boot, developers can swiftly and efficiently create Java application
 
 The template comes pre-configured with a basic project structure and setup to facilitate getting started.
 
-## Steps to get started:
+## Steps to get started
 
 1. Navigate to `CI pipeline` 
 2. Run the `Prepare` stage

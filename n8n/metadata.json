@@ -2,6 +2,7 @@
   "Workspace": "boost",
   "Links": {
     "Blogpost": "https://codesphere.com/articles/n8n-a-cost-saving-zapier-alternative-hosted-on-codesphere-2",
+    "Low Code solution": "https://codesphere.com/articles/automation-with-open-source-llm-on-codesphere",
     "N8N - Docs": "https://docs.n8n.io/"
   },
   "Categories": ["Application"],

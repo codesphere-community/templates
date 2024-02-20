@@ -1,0 +1,9 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "Python": "https://codesphere.com/articles/python"
+  },
+  "Categories": ["Framework"],
+  "Contributors": ["romfrlov", "gnarlex", "Simon-Count"],
+  "Title": "Flask - Dreams App"
+}

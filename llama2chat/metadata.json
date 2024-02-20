@@ -1,0 +1,10 @@
+{
+  "Workspace": "Pro",
+  "Links": {
+    "Blogpost": "https://codesphere.com/articles/self-hosted-chatgpt-in-codesphere",
+    "Llama.cpp": "https://github.com/ggerganov/llama.cpp"
+  },
+  "Categories": ["Application"],
+  "Contributors": ["Simon-Count", "kathacodesphere"],
+  "Title": "Llama2.cpp Chat"
+}

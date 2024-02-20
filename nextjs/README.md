@@ -1,3 +1,7 @@
+## Next.js
+
+Next.js is a React framework that enables server-side rendering, static site generation, and client-side rendering for web applications, providing an efficient and flexible way to build modern web experiences with React. It simplifies the development process by offering built-in routing, automatic code splitting, and various optimization techniques, making it a popular choice for building performant and SEO-friendly web applications.
+
 This public roadmap project was bootstrapped with create-next-app. It uses an SQLite database to store the items and votes. 
 
 It showcases how to run next.js in a Codesphere workspace

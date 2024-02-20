@@ -1,6 +1,7 @@
 ## Java Spring Boot
 
 This project serves as a Java Spring Boot template, designed to kickstart the development of Spring-based applications. 
+
 With Spring Boot, developers can swiftly and efficiently create Java applications without the hassle of configuring Spring frameworks.
 
 The template comes pre-configured with a basic project structure and setup to facilitate getting started.

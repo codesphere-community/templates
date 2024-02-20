@@ -1,13 +1,26 @@
-This template will install the python wrapper of llama.cpp from [llama-cpp-python](https://github.com/abetlen/llama-cpp-python) and run a FastAPI based python server that can be used as a drop in replacement for the openAI API. This means code that is compatible with the chatGPT API will also be compatible with this self hosted version.
+## llama-cpp-python FastAPI Server Template
 
- The CI pipeline is configured to fetch a pre-converted and quantized llama code instruct model from TheBloke from [huggingface](https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF) but you can edit that to use other compatible models too.
+This template installs the Python wrapper of llama.cpp from llama-cpp-python and runs a FastAPI-based Python server. The server can be utilized as a drop-in replacement for the OpenAI API. This means that code compatible with the ChatGPT API will also be compatible with this self-hosted version.
 
- Once the server is started open the deployment url and append /docs to see a swagger like API documentation where you can view and test all available endpoints. 
+## Features
 
- Per default the max_token setting of this model is very restrictive (to support less capable hardware) - if you want to send or receive longer queries navigate into the installed folder /.venv/lib/python3.8/site-packages/llama_cpp/server/app.py and edit line 412:
-
- ```python
- max_tokens_field = Field(
+- **Compatibility**: Compatible with code designed for the OpenAI API, making it easy to transition to self-hosting.
+- **Pre-Converted and Quantized Model**: Configured to fetch a pre-converted and quantized llama code instruct model from TheBloke on Hugging Face. However, you have the flexibility to use other compatible models by editing the configuration.
+- **Interactive Documentation**: Upon starting the server, open the deployment URL and append /docs to access a Swagger-like API documentation. Here, you can view and test all available endpoints easily.
+- **Customizable Token Settings**: By default, the max_token setting of this model is restrictive to support less capable hardware. You can adjust this setting by navigating into the installed folder /venv/lib/python3.8/site-packages/llama_cpp/server/app.py and editing line 412 in the following manner:
+  
+```python
+max_tokens_field = Field(
     default=400, ge=1, description="The maximum number of tokens to generate."
 )
-``` 
+```
+
+## Usage
+- **Installation**: Clone this repository and install the dependencies.
+- **Configuration**: Edit the configuration to specify your desired model or settings.
+- **Start the Server**: Execute the command to start the server.
+- **Access Documentation**: Open the deployment URL in your browser and append /docs to access the interactive API documentation.
+
+## Note
+
+Please be aware that the default configuration might not suit your specific requirements. Feel free to customize the settings according to your needs.

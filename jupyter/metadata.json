@@ -1,0 +1,9 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "Tutorial": "https://codesphere.com/articles/getting-started-with-jupyter-notebooks"
+  },
+  "Categories": ["Applicatiopn"],
+  "Contributors": ["Simon-Count"],
+  "Title": "Jupyter Notebook Template"
+}

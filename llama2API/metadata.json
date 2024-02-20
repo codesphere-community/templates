@@ -2,7 +2,8 @@
   "Workspace": "Pro",
   "Links": {
     "python-cpp-python": "https://github.com/abetlen/llama-cpp-python",
-    "Self-hosted vs API-based": "https://codesphere.com/articles/self-hosted-vs-api-based-llms"
+    "Self-hosted vs API-based": "https://codesphere.com/articles/self-hosted-vs-api-based-llms",
+    "Modelcard": "https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF"
   },
   "Categories": ["Application"],
   "Contributors": ["Simon-Count"],

@@ -1,0 +1,10 @@
+{
+  "Workspace": "boost",
+  "Links": {
+    "Blogpost": "https://codesphere.com/articles/n8n-a-cost-saving-zapier-alternative-hosted-on-codesphere-2",
+    "N8N - Docs": "https://docs.n8n.io/"
+  },
+  "Categories": ["Application"],
+  "Contributors": ["Datata1", "Simon-Count"],
+  "Title": "N8N self-hosted on Codesphere"
+}

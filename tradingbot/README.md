@@ -1,5 +1,3 @@
-# Trading Bot in Python
-
 ## Getting started
 
 1. Create an [Alpaca](https://alpaca.markets/) account (you'll need the secret and public keys to access their API).

@@ -70,3 +70,9 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Trigger FastAPI Endpoint
+        run: |
+          curl -X POST YOUR_FASTAPI_URL/pull-repository
+        env:
+          YOUR_FASTAPI_URL: "https://54102-3000.2.codesphere.com/"

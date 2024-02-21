@@ -73,6 +73,6 @@ jobs:
 
       - name: Trigger FastAPI Endpoint
         run: |
-          curl -X POST YOUR_FASTAPI_URL/pull-repository
+          curl -X POST ${{ secrets.FASTAPI_URL }}/pull-repository
         env:
-          YOUR_FASTAPI_URL: "https://54102-3000.2.codesphere.com/"
+          YOUR_FASTAPI_URL: ${{ secrets.FASTAPI_URL }}

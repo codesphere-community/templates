@@ -1,17 +1,22 @@
 ## Description
 
-Brief description of what this template does and its purpose.
+This is an Angular Template which can be deployed on Codesphere within seconds.
+
+It is a PDF merge tool that allows users to merge different PDFs in order of preference
 
 
-  ```python
-  print('Hello, World!')
-  ```
-### Test 1
 
 ## Installation
 
-Describe how to install and use the template on Codesphere
+1. Clone the repository
+2. Run the `Prepare` stage of the ci-pipeline
+3. Run the `Run` stage of the ci-pipeline
+4. Click `Open deployment` in the top right corner
 
-### Test2
+
+feel free to modify this template to practise your Angular skills or to create your own Angular project :)
+
+
+
 
 

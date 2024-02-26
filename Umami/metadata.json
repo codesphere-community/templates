@@ -1,0 +1,9 @@
+{
+  "Workspace": "boost",
+  "Links": {
+    "Blogpost": "https://codesphere.com/articles/umami-tutorial"
+  },
+  "Categories": ["Application"],
+  "Contributors": ["sancho1952007"],
+  "Title": "Umami - Self-hosted web analytics"
+}

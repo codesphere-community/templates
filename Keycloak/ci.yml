@@ -1,0 +1,14 @@
+prepare:
+  steps:
+    - name: Give Appropriate Permissions To The Install Script
+      command: chmod +x ./install.sh
+    - name: Run The Installation Script
+      command: ./install.sh
+test:
+  steps: []
+run:
+  steps:
+    - name: Start Keycloak
+      command: bash ./keycloak-$(cat ./KEYCLOAK_VERSION)/bin/kc.sh start --hostname
+        $WORKSPACE_DEV_DOMAIN --http-port 3000 --db-url-database $DATABASE_URL
+        --proxy edge

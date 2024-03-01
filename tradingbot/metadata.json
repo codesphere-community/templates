@@ -1,0 +1,9 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "Blogpost": "https://codesphere.com/articles/how-to-build-a-stock-trading-bot-with-python"
+  },
+  "Categories": ["Application"],
+  "Contributors": ["LiorB-D", "romfrolov"],
+  "Title": "Trading Bot - Python & Alpaca"
+}

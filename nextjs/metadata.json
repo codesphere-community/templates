@@ -1,0 +1,10 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "Next.js": "https://codesphere.com/articles/next-js",
+    "Blogpost": "https://codesphere.com/articles/run-next-js-roadmap"
+  },
+  "Categories": ["Framework"],
+  "Contributors": ["gitwitdev", "Simon-Count"],
+  "Title": "Next.js - Public Roadmap Project"
+}

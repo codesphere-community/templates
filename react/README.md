@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+## Steps to get started
+
+1. Navigate to `CI pipeline` 
+2. Run the `Prepare` stage
+3. Run the `Run` stage
+4. Open the deployment with the icon in the top right corner
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

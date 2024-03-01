@@ -1,0 +1,9 @@
+{
+  "Workspace": "GPU",
+  "Links": {
+    "Blogpost": "https://codesphere.com/articles/using-stable-diffusion"
+  },
+  "Categories": ["Application"],
+  "Contributors": ["Simon-Count"],
+  "Title": "Stable Diffusion Text2Img"
+}

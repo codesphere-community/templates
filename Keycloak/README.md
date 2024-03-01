@@ -38,7 +38,7 @@ For following along with this tutorial-like blog post you need to have these thi
 - Click on the "Add new variable" option to add a variable.
 ![image](https://github.com/sancho1952007/templates/assets/73981314/1e4bdd0c-932e-4ec0-8e48-8aab642a99fd)
 - Add the variables:
-   - DATABASE_URL (The database URL).
+   - DATABASE_URL (The PostgreSQL database URL).
    - KEYCLOAK_ADMIN (The admin username).
    - KEYCLOAK_ADMIN_PASSWORD (The admin password).
      ![image](https://github.com/sancho1952007/templates/assets/73981314/6e1421d5-2f2f-4425-bfb1-e8506896ae89)

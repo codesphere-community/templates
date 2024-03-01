@@ -16,7 +16,7 @@ For following along with this tutorial-like blog post you need to have these thi
 ![image](https://github.com/sancho1952007/templates/assets/73981314/aaac0c17-0d33-4b0a-8777-fa3384777fa8)
 - Select PostgreSQL from the dropdown of the available databases.
 ![image](https://github.com/sancho1952007/templates/assets/73981314/fc87e032-0fb7-4f0f-bb23-ef184169ead4)
-- Click on the "Create" button once you have chosen your preferred configuration.
+- Click on the "Create" button once you have chosen your preferred plan (minimum plan required: Free).
 ![image](https://github.com/sancho1952007/templates/assets/73981314/9ff84fc7-7555-4c29-b5e4-c191c17b9d6c)
 - Wait for the "Actions" tab to show the text, "Show info". This may take a while.
 - Click on the "Show info" button and copy the "Connection String". This is the database URL you will need in the further steps.

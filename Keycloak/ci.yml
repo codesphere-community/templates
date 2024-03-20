@@ -9,6 +9,4 @@ test:
 run:
   steps:
     - name: Start Keycloak
-      command: bash ./keycloak-$(cat ./KEYCLOAK_VERSION)/bin/kc.sh start --hostname
-        $WORKSPACE_DEV_DOMAIN --http-port 3000 --db-url-database $DATABASE_URL
-        --proxy edge
+      command: bash ./keycloak-$(cat ./KEYCLOAK_VERSION)/bin/kc.sh start --hostname $WORKSPACE_DEV_DOMAIN --http-port 3000 --proxy-headers xforwarded --http-enabled true --db-url-database $DATABASE_URL

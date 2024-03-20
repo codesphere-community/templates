@@ -1,0 +1,8 @@
+prepare:
+  steps:
+    - command: npm install flowise
+test:
+  steps: []
+run:
+  steps:
+    - command: sudo n install 18.15.0 && npx flowise start

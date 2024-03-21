@@ -1,5 +1,3 @@
-# Keycloak - configuring for production on Codesphere
-
 ## What Is Keycloak?
 Keycloak is an open-source identity and access management solution that provides robust authentication and authorization services for web and mobile applications. Developed by Red Hat, Keycloak simplifies the implementation of security features by offering a centralized and customizable authentication server. It supports various authentication protocols, including OpenID Connect, OAuth 2.0, and SAML, allowing developers to integrate single sign-on (SSO) capabilities seamlessly. Keycloak's versatile features include user federation, role-based access control, and social identity provider integration, enabling organizations to secure their applications with ease. Its user-friendly administration console facilitates the management of users, groups, and client applications, making it a popular choice for enterprises seeking a comprehensive identity management solution.
 
@@ -63,7 +61,31 @@ Congratulations, You have successfully set up Keycloak on Codesphere 🎉
 Go to the "CI Pipelines" and then run the "Prepare" CI command. This will automatically delete the old version and update it to the latest version.
 Stop (if needed) and then Re-Run the "Run" CI command to restart it.
 
+## Customizing settings in the start command.
+In this tutorial, we will explore how we can change the starting parameters in Codesphere CI Commands.  
+For this tutorial, we will change the maximum queued requests per second in Keycloak. This tutorial can even be used in case you want to change any type of configuration.
+
+Maximum queued requests per second or `http-max-queued-requests` in Keycloak sets the limit for queued HTTP requests. It prevents server overload by rejecting requests beyond the specified limit, maintaining stability during high traffic. Adjusting this parameter optimizes server performance under varying loads.
+
+- Open the "Setup" section.
+![image (2)](https://github.com/sancho1952007/templates/assets/73981314/fe509ea8-dd50-4e94-9064-c8d064348464)
+- Click on the "CI" section.
+![image (3)](https://github.com/sancho1952007/templates/assets/73981314/13394724-fd37-465c-a8c2-31b3a2fb2543)
+- Click on the "Stage 3: Run" button and then click the "Edit" button.
+![image (4)](https://github.com/sancho1952007/templates/assets/73981314/fbc71ced-3256-4678-b020-120d87f7970a)
+- Scroll to the end of the command then append your command. In this case, we want to put --http-max-queued-requests with the value of 100.
+![image (5)](https://github.com/sancho1952007/templates/assets/73981314/a55c5fee-9a6b-4bd7-a3a8-a33bd1290dd3)
+- Click on the "Submit" button.
+![image (6)](https://github.com/sancho1952007/templates/assets/73981314/2fc19930-b73c-4adc-99a9-3a2a9aab50ad)
+- Click on the "CI Pipeline" button at the bottom of the page.
+![image (7)](https://github.com/sancho1952007/templates/assets/73981314/456b9bc5-1609-454a-b704-7dafd0230ac4)
+- Go to the "Run" section of the CI Pipeline and click on the red "Stop" button in case the server is running.
+![image (8)](https://github.com/sancho1952007/templates/assets/73981314/04b410f8-d546-4a6e-bd8a-b65eb5b22446)
+- Now click the blue-violet "Run" button to run to again start the server. This will now run with the changes we made.
+![image (1)](https://github.com/sancho1952007/templates/assets/73981314/414ddbcd-e23e-419f-b719-bccbe7798781)
+
+Now, any changes made in the start command will be reflected instantly (custom commands can take time to start the first time in case there are any major change made)!
+
 ## More customization
 You can find more customization options here: https://www.keycloak.org/server/all-config
-Go to the "Define CI Pipelines" and edit the start script as per your requirements.
-You may need to restart the start CI command in order to see the changes.
+Follow the same steps as mentioned above to edit the start command and see your changes!

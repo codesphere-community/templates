@@ -59,5 +59,10 @@ tar -xvf ./keycloak-${latest_tag}.tar.gz
 echo "[LOG] Deleting the tar file"
 rm -rf ./keycloak-${latest_tag}.tar.gz
 
+# Configure the database
+echo "[LOG] Configuring the database"
+chmod +x ./config.sh
+./config.sh
+
 # Complete Confirmation!
 echo "[LOG] Installation Completed. Execute the \"RUN\" CI command."

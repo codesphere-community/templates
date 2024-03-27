@@ -83,4 +83,3 @@ Please adhere to the following guidelines when making contributions:
 *   Clearly describe what your template does and how it can be used.
 
 Thank you for contributing to the Codesphere community!
-

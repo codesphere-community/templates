@@ -26,6 +26,3 @@ echo "db=postgres" > ./keycloak-$(cat ./KEYCLOAK_VERSION)/conf/keycloak.conf
 echo "db-username=$username" >> ./keycloak-$(cat ./KEYCLOAK_VERSION)/conf/keycloak.conf
 echo "db-password=$password" >> ./keycloak-$(cat ./KEYCLOAK_VERSION)/conf/keycloak.conf
 echo "db-url=$db_url" >> ./keycloak-$(cat ./KEYCLOAK_VERSION)/conf/keycloak.conf
-
-# Make a .gitignore file to accidentally prevent pushing database information to git
-echo "./keycloak-$(cat ./KEYCLOAK_VERSION)/conf/keycloak.conf" > ./.gitignore

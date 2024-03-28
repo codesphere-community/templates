@@ -1,0 +1,9 @@
+{
+  "Workspace": "micro",
+  "Links": {
+    "Blogpost": "https://medium.com/@sanchogodinho/keycloak-configuring-for-production-on-codesphere-b1bd9dd79901"
+  },
+  "Categories": ["Application"],
+  "Contributors": ["sancho1952007"],
+  "Title": "Self-hosted Keycloak on Codesphere"
+}

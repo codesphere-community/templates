@@ -1,0 +1,5 @@
+fastapi==0.110.2
+moviepy==1.0.3
+python-magic==0.4.27
+python-multipart==0.0.9
+uvicorn==0.29.0

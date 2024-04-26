@@ -1,10 +1,12 @@
 prepare:
   steps:
     - name: Installing the python dependencies.
-      command: pip3 install -r requirements.txt
+      command: pipenv install -r requirements.txt
 test:
   steps: []
 run:
   steps:
+  - name: Switch to the new python environment.
+    command: source "$(pipenv --venv)/bin/activate"
   - name: Start the FastAPI server.
     command: uvicorn main:app --reload --host 0.0.0.0 --port 3000

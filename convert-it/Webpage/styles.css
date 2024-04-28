@@ -35,7 +35,7 @@ body {
 
 .title {
     width: min-content;
-    font-size: 80px;;
+    font-size: 80px;
     font-weight: 700;
     -webkit-text-stroke: 3px rgb(230, 230, 230);
     background:  linear-gradient(#ffffff, #ffffff) left  no-repeat, #121212;
@@ -64,6 +64,7 @@ body {
     gap: 20px;
     margin-top: 20px;
     margin-left: 20px;
+    margin-right: 20px;
 }
 
 .component {
@@ -73,7 +74,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
     transition: box-shadow 0.75s ease, transform 0.5s ease;
 }
@@ -91,11 +92,12 @@ body {
 }
 
 .progress-circle {
+    grid-column: span 1;
     width: 65px;
     height: 65px;
     display: flex;
     margin-top: 5px;
-    margin-left: 25px;
+    margin-right: 15px;
     position: relative;
     align-items: center;
     justify-content: center;
@@ -146,9 +148,9 @@ body {
 
 .option-select,
 .api-button {
-    grid-column: span 2;
     width: 100%;
     padding: 10px;
+    grid-column: span 2;
 }
 
 .file-select {
@@ -274,7 +276,30 @@ body {
 .toast.toast-warning .toast-progress { 
     background-color: #f1c40f; 
 } 
-  
+
+@media (max-width: 1280px) {
+    .container {
+        max-width: 1000px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .component {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 860px) {
+    .title {
+        font-size: 60px;
+    }
+    .container {
+        max-width: 600px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .component {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 @keyframes slideInRight { 
     0% { 
         transform: translateX(110%); 

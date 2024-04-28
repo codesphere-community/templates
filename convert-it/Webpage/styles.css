@@ -2,8 +2,12 @@ body {
     margin: 0;
     padding: 0;
     color: #ffffff;
+    background-size: cover;
     background-color: #121212;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
+    background-image: url("Background1.jpg");
 }
 
 .cursor {
@@ -39,6 +43,7 @@ body {
     font-weight: 700;
     -webkit-text-stroke: 3px rgb(230, 230, 230);
     background:  linear-gradient(#ffffff, #ffffff) left  no-repeat, #121212;
+    background:  linear-gradient(#ffffff, #ffffff) left  no-repeat, transparent;
     background-size: 0% 100%;
     background-clip: text;
     -webkit-background-clip: text;

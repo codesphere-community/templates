@@ -1,5 +1,5 @@
 const coords = { x: 0, y: 0 };
-const circles = document.querySelectorAll(".circle");
+const circles = document.querySelectorAll(".cursor-circle");
 
 const colors = [
   "#ffb56b",

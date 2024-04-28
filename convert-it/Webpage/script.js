@@ -1,9 +1,8 @@
-import {showToast} from "./toast.js";
+import { showToast, fillProgressCircle} from "./utils.js";
 import { animateCircles } from "./cursor.js";
 
 
 // Required variables.
-animateCircles();
 let imageName = null;
 let audioName = null;
 let convertedImage = null;
@@ -23,46 +22,78 @@ function disableAudioDownload() {
     document.getElementById("download-audio").disabled = true;
 }
 
+
 // Function to handle image conversion.
 async function convertImage() {
 
-    // Clear the converted image data.
+    // Clearing the converted image data.
     convertedImage = null;
 
-    // Get the selected file and output type.
+    // Geting the selected file and output type.
     const file = document.getElementById("image-file").files[0];
     const outputType = document.getElementById("image-format").value;
 
-    // Create FormData object to send file.
+    // Creating the FormData object for the API.
     const formData = new FormData();
     formData.append("file", file);
     formData.append("output_type", outputType);
 
+    // Opening the try block.
     try {
-        // Make POST request to convert image.
-        const response = await fetch(`//${location.host}/convert-image`, {
-            method: "POST",
-            body: formData
-        });
+        // Creating the config.
+        const config = {
+            responseType: "blob",
+            onUploadProgress: (progressEvent) => {
+                const { loaded, total } = progressEvent;
+                const percentage = Math.round((loaded / total) * 100);
+                if (loaded === total) {
+                    fillProgressCircle("image", percentage);
+                    showToast(`Successfully uploaded ${file.name}`, "success");
+                    fillProgressCircle("image", 0);
+                }
+                else {
+                    fillProgressCircle("image", percentage);
+                }
+            },
+            onDownloadProgress: (progressEvent) => {
+                const { loaded, total } = progressEvent;
+                const percentage = Math.round((loaded / total) * 100);
+                if (loaded === total) {
+                    fillProgressCircle("image", percentage);
+                }
+                else {
+                    fillProgressCircle("image", percentage);
+                }
+            }
+        };
 
-        if (response.ok) {
-            // Save the converted image data
-            convertedImage = await response.blob();
-            imageName = response.headers.get("content-language");
+        // Getting the response by sending the FormData along with the config.
+        const response = await axios.post(`//${location.host}/convert-image`, formData, config);
+
+        // Processing the response if status is 200.
+        if (response.status === 200) {
+
+            // Saving the converted image data.
+            convertedImage = response.data;
+            imageName = response.headers["content-language"];
 
             // Enabling the download button after successful image conversion.
-            document.getElementById("download-image").disabled = false;
-            showToast("Image converted successfully!", "success");
-
-        } else {
-            // Image conversion failed, showing error message.
-            disableImageDownload();
-            const errorData = await response.json();
-            showToast(`Error converting image: ${errorData.detail}`, "danger");
+            setTimeout(() => {
+                fillProgressCircle("image", 0);
+                showToast("Image converted successfully.", "success");
+                document.getElementById("download-image").disabled = false;
+            }, 1000);
         }
-    } catch (error) {
-        // Error occurred during request.
+
+        else {
+            // Showing error message if image conversion fails.
+            disableImageDownload();
+            showToast(`Error converting image: ${response.data.detail}`, "danger");
+        }
+    }
+    catch (error) {
         disableImageDownload();
+        console.log(error);
         showToast(`An error occurred: ${error.message}`, "danger");
     }
 }
@@ -81,13 +112,12 @@ function downloadImage() {
 }
 
 
-// Function to handle audio extraction.
 async function extractAudio() {
 
-    // Clear the extracted audio data.
+    // Clearing the extracted audio data.
     extractedAudio = null;
 
-    // Get the selected file and output type.
+    // Getting the selected file and output type.
     const file = document.getElementById("video-file").files[0];
     const outputType = document.getElementById("audio-format").value;
 
@@ -96,32 +126,64 @@ async function extractAudio() {
     formData.append("file", file);
     formData.append("output_type", outputType);
 
+    // Opening the try block.
     try {
-        const response = await fetch(`//${location.host}/extract-audio`, {
-            method: "POST",
-            body: formData
-        });
+        // Creating the config.
+        const config = {
+            responseType: "blob",
+            onUploadProgress: (progressEvent) => {
+                const { loaded, total } = progressEvent;
+                const percentage = Math.round((loaded / total) * 100);
+                if (loaded === total) {
+                    fillProgressCircle("audio", percentage);
+                    showToast(`Successfully uploaded ${file.name}`, "success");
+                    fillProgressCircle("audio", 0);
+                }
+                else {
+                    fillProgressCircle("audio", percentage);
+                }
+            },
+            onDownloadProgress: (progressEvent) => {
+                const { loaded, total } = progressEvent;
+                const percentage = Math.round((loaded / total) * 100);
+                if (loaded === total) {
+                    fillProgressCircle("audio", percentage);
+                }
+                else {
+                    fillProgressCircle("audio", percentage);
+                }
+            }
+        };
 
-        if (response.ok) {
+        // Getting the response by sending the FormData along with the config.
+        const response = await axios.post(`//${location.host}/extract-audio`, formData, config);
+
+        // Processing the response if status is 200.
+        if (response.status === 200) {
+
             // Saving the extracted audio data.
-            extractedAudio = await response.blob();
-            audioName = response.headers.get("content-language");
+            extractedAudio = response.data;
+            audioName = response.headers["content-language"];
 
             // Enabling the download button after successful audio extraction.
-            document.getElementById("download-audio").disabled = false;
-            showToast("Audio extracted successfully.", "success");
+            setTimeout(() => {
+                fillProgressCircle("audio", 0);
+                showToast("Audio extracted successfully.", "success");
+                document.getElementById("download-audio").disabled = false;
+            }, 1000);
 
-       } else {
-            // Audio extraction failed, showing error message.
+        } else {
+            // Showing error message if audio extraction fails.
             disableAudioDownload();
-            const errorData = await response.json();
-            showToast(`Error extracting audio: ${errorData.detail}`, "danger");
-       }
-    } catch (error) {
+            showToast(`Error extracting audio: ${response.data.detail}`, "danger");
+        }
+    }
+    catch (error) {
         disableAudioDownload();
         showToast(`An error occurred: ${error.message}`, "danger");
     }
 }
+
 
 
 // Function to download the extracted audio.
@@ -240,6 +302,9 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     // Adding event listeners.
+    animateCircles();
+    fillProgressCircle("image", 0);
+    fillProgressCircle("audio", 0);
     document.getElementById("convert-image").addEventListener("click", convertImage);
     document.getElementById("download-image").addEventListener("click", downloadImage);
     document.getElementById("extract-audio").addEventListener("click", extractAudio);

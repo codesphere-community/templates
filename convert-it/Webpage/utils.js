@@ -37,4 +37,22 @@ export function showToast(
 		toastAlready.remove(); 
 	} 
 
-	document.body.appendChild(box)}; 
+	document.body.appendChild(box)
+};
+
+export function fillProgressCircle(element, percentage) {
+
+    // Get the progress circle element.
+    const circleFill = document.getElementById(`circle-fill-${element}`);
+	const progressPercent = document.getElementById(`progress-percent-${element}`);
+
+	// Updating the progress circle based on the percentage.
+	progressPercent.innerHTML = percentage + "%";
+	if (percentage === 0){
+		circleFill.style.display = "none";
+	}
+	else {
+		circleFill.style.display = "block";
+		circleFill.style.strokeDashoffset = 242 - (242 * (percentage / 100));
+	}
+}

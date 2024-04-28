@@ -1,22 +1,52 @@
+<!--DOCUMENT INFO-->
 <!DOCTYPE html>
 <html lang="en">
+
+<!--Header and other imports-->
 <head>
     <meta charset="UTF-8">
     <title>File Converter</title>
-    <script src="/static/script.js" type="module"></script>
     <link rel="stylesheet" href="/static/styles.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="/static/script.js" type="module"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href= "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
+<!--Body start-->
 <body>
+
+    <!--Title container and its elements-->
     <div class="title-container">
         <span class="title" id="file-title">FILE</span>
         <span class="title" id="converter-title">CONVERTER</span>
     </div>
+
+    <!--Convert Image Component container and h2 tag-->
     <div class="container">
         <div class="component">
-            <h2>Convert Image</h2>
+            <h2 class="component-title">Convert Image</h2>
+
+            <!--Progress circle element to track upload and download progress-->
+            <div class = "progress-circle" id="progress-circle-image">
+                <div class="outer">
+                    <svg class="circle-fill-svg" id="circle-fill-svg-image" xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                           <linearGradient id="GradientColor">
+                              <stop offset="0%" stop-color="#e91e63" />
+                              <stop offset="100%" stop-color="#673ab7" />
+                           </linearGradient>
+                        </defs>
+                        <circle class="circle-fill" id="circle-fill-image" cx="42.5" cy="42.5" r="38.75" stroke-linecap="round"/>
+                    </svg>
+                    <div class="inner">
+                        <div class="progress-percent" id="progress-percent-image">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Remaining elements of the component-->
             <select class="option-select" id="image-format">
                 <option value="default">Select output type</option>
                 <option value="bmp">BMP</option>
@@ -36,8 +66,30 @@
             <button class="api-button" id="download-image" disabled>Download</button>
             <label class="supported-formats"><b>SUPPORTED FORMATS:</b></br>BMP, GIF, ICO, JPEG, PNG, PPM, TIFF, WEBP, PDF</label>
         </div>
+
+        <!--Extract Audio Component container and h2 tag-->
         <div class="component">
-            <h2>Extract Audio</h2>
+            <h2 class="component-title">Extract Audio</h2>
+
+            <!--Progress circle element to track upload and download progress-->
+            <div class = "progress-circle" id="progress-circle-audio">
+                <div class="outer">
+                    <svg class="circle-fill-svg" id="circle-fill-svg-audio" xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                        <defs>
+                           <linearGradient id="GradientColor">
+                              <stop offset="0%" stop-color="#e91e63" />
+                              <stop offset="100%" stop-color="#673ab7" />
+                           </linearGradient>
+                        </defs>
+                        <circle class="circle-fill" id="circle-fill-audio" cx="42.5" cy="42.5" r="38.75" stroke-linecap="round"/>
+                    </svg>
+                    <div class="inner">
+                        <div class="progress-percent" id="progress-percent-audio">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Remaining elements of the component-->
             <select class="option-select" id="audio-format">
                 <option value="default">Select output type</option>
                 <option value="mp3">MP3</option>
@@ -51,28 +103,34 @@
             <label class="supported-formats"><b>SUPPORTED FORMATS:</b></br> MP4, AVI, MOV, MKV, WMV, FLV</label>
         </div>
     </div>
-    <div class="toast-overlay" id="toast-overlay"></div> 
+
+    <!--Toast component overlay to display toast notifications-->
+    <div class="toast-overlay" id="toast-overlay"></div>
+
+    <!--Cursor component for cursor trail effect-->
     <div class="cursor">
-        <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-          <div class="circle"></div>
-        </div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+        <div class="cursor-circle"></div>
+    </div>
+
+<!--End of Body and HTML-->
 </body>
 </html>

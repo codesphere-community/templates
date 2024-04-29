@@ -5,8 +5,8 @@ from io import BytesIO
 from moviepy.editor import VideoFileClip
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response, HTMLResponse
-from fastapi import FastAPI, File, Form, UploadFile, HTTPException
+from fastapi.responses import Response, FileResponse, HTMLResponse
+from fastapi import FastAPI, File, Form, UploadFile, HTTPException, BackgroundTasks
 
 
 #-Base objects-#
@@ -91,11 +91,12 @@ async def convert_image(file: UploadFile = File(...), output_type: str = Form(..
     return Response(
         content = image_data.read(),
         media_type = f"image/{output_type}",
-        headers = {"Content-Language": output_file})
+        headers = {"Content-Language": output_file,
+                   "Content-Disposition": f'inline; filename="{output_file}"'})
 
 
 @app.post("/extract-audio")
-async def extract_audio(file: UploadFile = File(...), output_type: str = Form(None)):
+async def extract_audio(bg: BackgroundTasks, file: UploadFile = File(...), output_type: str = Form(None)):
 
     #-Handling missing file-#
     if not file:
@@ -144,15 +145,10 @@ async def extract_audio(file: UploadFile = File(...), output_type: str = Form(No
         os.remove(temp_file)
         del video_clip, audio_clip
 
-    #-Opening the saved audio file-#
-    with open(output_file, "rb") as file:
-        audio_data = file.read()
-
     #-Removing the audio file-#
-    os.remove(output_file)
+    bg.add_task(lambda : os.remove(output_file))
 
-    #-Returning the response if conversion successful-#
-    return Response(
-        content = audio_data,
-        media_type = f"audio/{output_type}",
-        headers = {"Content-Language": output_file})
+    return FileResponse(
+        path = output_file,
+        filename = output_file,
+        media_type=f"audio/{output_type}")

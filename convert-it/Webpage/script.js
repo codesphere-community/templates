@@ -163,7 +163,7 @@ async function extractAudio() {
 
             // Saving the extracted audio data.
             extractedAudio = response.data;
-            audioName = response.headers["content-language"];
+            audioName = decodeURI(response.headers.get("content-disposition").split("utf-8''").pop());
 
             // Enabling the download button after successful audio extraction.
             setTimeout(() => {

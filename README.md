@@ -64,12 +64,13 @@ Step 3: Create Template
 ```
 
 
-4. Add a Cover picture in the `.webp` format in your templates root directory. Name it like your templates folder (it is case-sensitive)
+4. Add a Cover picture in the `.webp` format in your templates directory. Name it like your templates folder (it is case-sensitive)
    
 ```
 For example: if the folder's path is templates/Example/
 
 -> the filename should be Example.webp
+-> the path to your file should be templates/Example/Example.webp
 ```
 
 You can use any picture that is free to use. You can create a graphic using tools like Figma.

@@ -17,7 +17,7 @@ supported_video_formats = {'mp4', 'avi', 'mov', 'mkv', 'wmv', 'flv'}
 supported_image_types = {"bmp", "gif", "ico", "jpeg", "png", "ppm", "tiff", "webp", "xbm", "xpm", "pdf"}
 
 #-Mounting the CSS and JS files-#
-app.mount("/static", StaticFiles(directory = "Webpage"), name="static")
+app.mount("/static", StaticFiles(directory = "webpage"), name="static")
 
 #-Adding the CORS configuration to the app-#
 app.add_middleware(
@@ -38,7 +38,7 @@ def get_output_name(filename: str, output_type: str) -> str:
 #-Root endpoint to serve the frontend-#
 @app.get("/")
 def health_check():
-    with open(os.path.join("Webpage", "index.html"), "r") as file:
+    with open(os.path.join("webpage", "index.html"), "r") as file:
         html_content = file.read()
     return HTMLResponse(content = html_content)
 

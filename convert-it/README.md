@@ -1,3 +1,5 @@
+![Template Banner](banner.webp?raw=true)
+
 # What is File Converter?
 File Converter is a ready-to-deploy web application which takes takes file input, converts images, and extracts audio from video. For front-end it uses Vanilla HTML, styled with CSS and Integrates the backend and other functionalities using JavaScript. For backend, it leverages Python and FastAPI program hosted on a uvicorn server.
 
@@ -15,42 +17,42 @@ To follow along this blog post, all you need is a Codesphere Account which you c
 # Deployment
 1. Click ![here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.
 
-![Codesphere Sign-in Page](Readme/1-Sign-In-Page.webp?raw=true)
+![Codesphere Sign-in Page](readme/1-Sign-In-Page.webp?raw=true)
 
 
 2. Here click on New Workspace to create a workspace where you will import this template.
 
-![Codesphere Workspace Page](Readme/2-Workspace-Page.webp?raw=true)
+![Codesphere Workspace Page](readme/2-Workspace-Page.webp?raw=true)
 
 
 3. Select your desired configuration. Recommended is to select “Always on” in the Deployment mode to have your web application running always.
 
-![Workspace configuration](Readme/3-Workspace-Configuration.webp?raw=true)
+![Workspace configuration](readme/3-Workspace-Configuration.webp?raw=true)
 
 
 4. After creating your workspace, it will lead you to the Codesphere IDE. Tap on the “Pipeline” tab at the bottom of the IDE beside the Terminal tab.
 
-![Codesphere IDE](Readme/4-Codesphere-IDE.webp?raw=true)
+![Codesphere IDE](readme/4-Codesphere-IDE.webp?raw=true)
 
 
 5. This will open the panel where you can execute the commands stored in the CI.yml file. Tap on the Run button in the Prepare section to install the required dependencies.
 
-![CI Pipeline Prepare Section](Readme/5-CI-Prepare-Section.webp?raw=true)
+![CI Pipeline Prepare Section](readme/5-CI-Prepare-Section.webp?raw=true)
 
 
 6. You will see a green highlight on Prepare section if successful. Now Tap on Run section and click the Run button since there are no Test steps for this template.
 
-![CI Pipeline Run Section](Readme/6-CI-Run-Section.webp?raw=true)
+![CI Pipeline Run Section](readme/6-CI-Run-Section.webp?raw=true)
 
 
 7. After tapping the Run button, you will see that the web server boots up indicating that the web application has been deployed. You can tap on the “Open deployment” button at the top right to visit your web application.
 
-![CI Pipeline successful run](Readme/7-CI-Successful-Run.webp?raw=true)
+![CI Pipeline successful run](readme/7-CI-Successful-Run.webp?raw=true)
 
 
 8. That’s it! You just deployed your File Converter web application in quick and easy steps using Codesphere. Now you can share the application URL with your friends and peers for them to use it as well!
 
-![File Converter Web Application](Readme/8-File-Converter-Web-Application.webp?raw=true)
+![File Converter Web Application](readme/8-File-Converter-Web-Application.webp?raw=true)
 
 # Conclusion
 With Codesphere, you can create templates such as the File Converter which we used in this one and have them ready-to-deploy without much hassle.

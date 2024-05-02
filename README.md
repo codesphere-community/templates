@@ -45,8 +45,35 @@ Step 2: Clone Locally
 Step 3: Create Template
 -----------------------
 
-1.  Create a new template or improve an existing one. Ensure it adheres to CodeSphere's guidelines.
+1.  Create a new template or improve an existing one. Ensure it adheres to Codesphere's guidelines.
 2.  Add your template in the appropriate directory.
+3.  Add to your template a json file named `metadata.json` in the root directory with the following structure:
+
+```js
+{
+  "Workspace": "the lowest plan possible",  
+  "Links": {  
+    "Link-Title": "https://example.com/",
+    "Link2": "https://example2.com/",
+    "...": "..."
+  },
+  "Categories": ["Cat1", "Cat2", "..."], 
+  "Contributors": ["GitHubAcc1", "GitHubAcc2", "..."],   
+  "Title": "Example Template"  
+} 
+```
+
+
+4. Add a Cover picture in the `.webp` format in your templates root directory. Name it like your templates folder (it is case sensitiv, be aware of spelling)
+   
+```
+For example: if the folder's path is templates/Example/
+
+-> the filename should be Example.webp
+```
+
+You can use any picture that is free to use. You can create a graphic using tools like Figma.
+
 
 Step 4: Commit Changes
 ----------------------

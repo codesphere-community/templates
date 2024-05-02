@@ -1,4 +1,4 @@
-![Template Banner](banner.webp?raw=true)
+![Template Banner](convert-it.webp?raw=true)
 
 # What is File Converter?
 File Converter is a ready-to-deploy web application which takes takes file input, converts images, and extracts audio from video. For front-end it uses Vanilla HTML, styled with CSS and Integrates the backend and other functionalities using JavaScript. For backend, it leverages Python and FastAPI program hosted on a uvicorn server.

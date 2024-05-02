@@ -64,7 +64,7 @@ Step 3: Create Template
 ```
 
 
-4. Add a Cover picture in the `.webp` format in your templates root directory. Name it like your templates folder (it is case sensitiv, be aware of spelling)
+4. Add a Cover picture in the `.webp` format in your templates root directory. Name it like your templates folder (it is case-sensitive)
    
 ```
 For example: if the folder's path is templates/Example/

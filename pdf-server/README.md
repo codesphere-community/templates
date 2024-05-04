@@ -1,3 +1,5 @@
+![Template Banner](pdf-server.webp?raw=true)
+
 # What is File Converter?
 It is a robust, locally hosted web-based PDF manipulation tool using Docker. It enables you to carry out various operations on PDF files, including splitting, merging, converting, reorganizing, adding images, rotating, compressing, and more. Originally developed entirely by ChatGPT, this locally hosted web application has evolved to encompass a comprehensive set of features, addressing all your PDF requirements.
 

@@ -88,12 +88,14 @@ async function convertImage() {
         else {
             // Showing error message if image conversion fails.
             disableImageDownload();
+            fillProgressCircle("image", 0);
             showToast(`Error converting image: ${response.data.detail}`, "danger");
         }
     }
     catch (error) {
-        disableImageDownload();
         console.log(error);
+        disableImageDownload();
+        fillProgressCircle("image", 0);
         showToast(`An error occurred: ${error.message}`, "danger");
     }
 }
@@ -175,11 +177,14 @@ async function extractAudio() {
         } else {
             // Showing error message if audio extraction fails.
             disableAudioDownload();
+            fillProgressCircle("image", 0);
             showToast(`Error extracting audio: ${response.data.detail}`, "danger");
         }
     }
     catch (error) {
+        console.log(error);
         disableAudioDownload();
+        fillProgressCircle("image", 0);
         showToast(`An error occurred: ${error.message}`, "danger");
     }
 }

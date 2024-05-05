@@ -18,6 +18,3 @@ git clone https://github.com/Stirling-Tools/Stirling-PDF.git
 cd Stirling-PDF
 chmod +x ./gradlew
 ./gradlew build
-
-mv /home/user/app/configs /home/user/app/Stirling-PDF/configs
-export DBUS_SESSION_BUS_ADDRESS="unix:path=/home/user/app/temp"

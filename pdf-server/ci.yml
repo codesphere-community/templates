@@ -9,4 +9,4 @@ test:
 run:
   steps:
     - name: Booting up the Stirling-PDF.
-      command: cd /home/user/app/Stirling-PDF && ./gradlew bootRun
+      command: cp -rf /home/user/app/configs /home/user/app/Stirling-PDF/ && export DBUS_SESSION_BUS_ADDRESS="unix:path=/home/user/app/temp" && cd /home/user/app/Stirling-PDF && ./gradlew bootRun

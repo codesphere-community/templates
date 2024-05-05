@@ -12,9 +12,10 @@ from fastapi import FastAPI, File, Form, UploadFile, HTTPException, BackgroundTa
 #-Base objects-#
 origins = []
 app = FastAPI()
-supported_audio_formats = {'mp3', 'wav', 'ogg', 'flac'}
-supported_video_formats = {'mp4', 'avi', 'mov', 'mkv', 'wmv', 'flv'}
+supported_audio_formats = {"mp3", "wav", "ogg", "flac"}
+supported_video_formats = {"mp4", "avi", "mov", "mkv", "wmv", "flv"}
 supported_image_types = {"bmp", "gif", "ico", "jpeg", "png", "ppm", "tiff", "webp", "xbm", "xpm", "pdf"}
+audio_codec_dict = {"mp3": "libmp3lame", "flac": "flac", "ogg": "libvorbis", "wav": "pcm_s16le", "ogv": "libvorbis"}
 
 #-Mounting the CSS and JS files-#
 app.mount("/static", StaticFiles(directory = "webpage"), name="static")
@@ -130,7 +131,7 @@ async def extract_audio(bg: BackgroundTasks, file: UploadFile = File(...), outpu
 
         #-Extracting and writing the audio-#
         audio_clip = video_clip.audio
-        audio_clip.write_audiofile(output_file, codec = output_type)
+        audio_clip.write_audiofile(output_file, codec =  audio_codec_dict[output_type])
 
     #-Raising exception if face error-#
     except:

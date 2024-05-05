@@ -1,3 +1,4 @@
+mkdir temp
 nix-channel --update
 nix-env -iA nixpkgs.zlib
 nix-env -iA nixpkgs.libtool
@@ -9,6 +10,7 @@ nix-env -iA nixpkgs.tesseract
 nix-env -iA nixpkgs.unpaper
 nix-env -iA nixpkgs.libreoffice
 nix-env -iA nixpkgs.ocrmypdf
+nix-env -iA nixpkgs.poppler_utils
 
 pip3 install uno opencv-python-headless unoconv pngquant WeasyPrint
 
@@ -18,3 +20,4 @@ chmod +x ./gradlew
 ./gradlew build
 
 mv /home/user/app/configs /home/user/app/Stirling-PDF/configs
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/home/user/app/temp"

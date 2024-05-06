@@ -1,9 +1,7 @@
-![Template Banner](convert-it.webp?raw=true)
-
-# What is File Converter?
+## What is File Converter?
 File Converter is a ready-to-deploy web application which takes takes file input, converts images, and extracts audio from video. For front-end it uses Vanilla HTML, styled with CSS and Integrates the backend and other functionalities using JavaScript. For backend, it leverages Python and FastAPI program hosted on a uvicorn server.
 
-# Features
+## Features
 - **Ready-to-Deploy:** Can login to Codesphere and select this template to deploy it with ease.
 - **Wide range of image support:** For both image input as well as supported output, it is compatible with the following audio types: BMP, GIF, ICO, JPEG, PNG, PPM, TIFF, WEBP, PDF.
 - **Wide range of video support:** It supports the following video input: MP4, AVI, MOV, MKV, WMV, FLV and following audio output: MP3, FLAC.
@@ -11,10 +9,10 @@ File Converter is a ready-to-deploy web application which takes takes file input
 - **Strong file detection:** It does not depend on the file extension to recognize the file type but instead identifies it directly from the buffer to avoid invalid files and support more files.
 - **Fun styling and interactive elements:** It uses simple CSS styling to provide a cursor trailing effect as well as clickable title (toggles different effects upon click).
 
-# Prerequisites
+## Prerequisites
 To follow along this blog post, all you need is a Codesphere Account which you can create by visiting ![here](https://codesphere.com/ide/signin).
 
-# Deployment
+## Deployment
 1. Click ![here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.
 
 ![Codesphere Sign-in Page](readme/1-Sign-In-Page.webp?raw=true)
@@ -54,5 +52,5 @@ To follow along this blog post, all you need is a Codesphere Account which you c
 
 ![File Converter Web Application](readme/8-File-Converter-Web-Application.webp?raw=true)
 
-# Conclusion
+## Conclusion
 With Codesphere, you can create templates such as the File Converter which we used in this one and have them ready-to-deploy without much hassle.

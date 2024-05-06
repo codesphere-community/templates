@@ -16,6 +16,8 @@
 - [ ] My project has been thoroughly tested and is fully functional.
 - [ ] The repository for my project includes a `ci.yml` file (Refer to [CodeSphere CI Pipelines](https://docs.codesphere.com/getting-started/ci-pipelines)).
 - [ ] The blog post about my project has been published.
+- [ ] I added a picture that will be displayed in the template gallery (.webp format)
+- [ ] I added a metadata.json file 
 - [ ] All workspaces for this project are deployed on Codesphere using the CI pipeline.
 - [ ] My app is persistently installed in a workspace (all components are installed and configured somewhere below the `/home/user/app` path).
 - [ ] My pull request is well-written and clear.

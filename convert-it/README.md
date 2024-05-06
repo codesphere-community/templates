@@ -10,10 +10,10 @@ File Converter is a ready-to-deploy web application which takes takes file input
 - **Fun styling and interactive elements:** It uses simple CSS styling to provide a cursor trailing effect as well as clickable title (toggles different effects upon click).
 
 ## Prerequisites
-To follow along this blog post, all you need is a Codesphere Account which you can create by visiting ![here](https://codesphere.com/ide/signin).
+To follow along this blog post, all you need is a Codesphere Account which you can create by visiting [here](https://codesphere.com/ide/signin).
 
 ## Deployment
-1. Click ![here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.
+1. Click [here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.
 
 ![Codesphere Sign-in Page](https://raw.githubusercontent.com/codesphere-community/templates/main/convert-it/readme/1-Sign-In-Page.webp?raw=true)
 

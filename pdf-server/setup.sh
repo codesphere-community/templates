@@ -18,3 +18,6 @@ git clone https://github.com/Stirling-Tools/Stirling-PDF.git
 cd Stirling-PDF
 chmod +x ./gradlew
 ./gradlew build
+mkdir configs
+
+cp /home/user/app/configs/custom_settings.yml /home/user/app/Stirling-PDF/configs/custom_settings.yml

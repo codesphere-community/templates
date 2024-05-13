@@ -10,7 +10,7 @@ All files and PDFs exist either exclusively on the client side, reside in server
 For more features and details, can refer to their GitHub: https://github.com/Stirling-Tools/Stirling-PDF.
 
 ## Prerequisites
-To follow along this blog post, all you need is a Codesphere Account which you can create by visiting ![here](https://codesphere.com/ide/signin).
+To follow along this blog post, all you need is a Codesphere Account which you can create by visiting [here](https://codesphere.com/ide/signin).
 
 ## Deployment
 1. Click ![here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.

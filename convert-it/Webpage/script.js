@@ -75,7 +75,7 @@ async function convertImage() {
 
             // Saving the converted image data.
             convertedImage = response.data;
-            imageName = response.headers["content-language"];
+            imageName = decodeURI(response.headers.get("content-disposition").split("filename=").pop());
 
             // Enabling the download button after successful image conversion.
             setTimeout(() => {
@@ -88,12 +88,14 @@ async function convertImage() {
         else {
             // Showing error message if image conversion fails.
             disableImageDownload();
+            fillProgressCircle("image", 0);
             showToast(`Error converting image: ${response.data.detail}`, "danger");
         }
     }
     catch (error) {
-        disableImageDownload();
         console.log(error);
+        disableImageDownload();
+        fillProgressCircle("image", 0);
         showToast(`An error occurred: ${error.message}`, "danger");
     }
 }
@@ -163,7 +165,7 @@ async function extractAudio() {
 
             // Saving the extracted audio data.
             extractedAudio = response.data;
-            audioName = decodeURI(response.headers.get("content-disposition").split("utf-8''").pop());
+            audioName = decodeURI(response.headers.get("content-disposition").split("filename=").pop());
 
             // Enabling the download button after successful audio extraction.
             setTimeout(() => {
@@ -175,11 +177,14 @@ async function extractAudio() {
         } else {
             // Showing error message if audio extraction fails.
             disableAudioDownload();
+            fillProgressCircle("image", 0);
             showToast(`Error extracting audio: ${response.data.detail}`, "danger");
         }
     }
     catch (error) {
+        console.log(error);
         disableAudioDownload();
+        fillProgressCircle("image", 0);
         showToast(`An error occurred: ${error.message}`, "danger");
     }
 }

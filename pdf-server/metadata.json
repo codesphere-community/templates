@@ -1,0 +1,9 @@
+{
+    "Workspace": "micro",
+    "Links": {
+      "Blogpost": "https://medium.com/@ahmedkhatib99/deploy-stirling-pdf-on-codesphere-c82045790725"
+    },
+    "Categories": ["Application"],
+    "Contributors": ["bluestero"],
+    "Title": "Dockerless PDF Web Application"
+}

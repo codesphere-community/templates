@@ -1,6 +1,6 @@
 ![Template Banner](pdf-server.webp?raw=true)
 
-# What is File Converter?
+## What is File Converter?
 It is a robust, locally hosted web-based PDF manipulation tool using Docker. It enables you to carry out various operations on PDF files, including splitting, merging, converting, reorganizing, adding images, rotating, compressing, and more. Originally developed entirely by ChatGPT, this locally hosted web application has evolved to encompass a comprehensive set of features, addressing all your PDF requirements.
 
 Stirling PDF does not initiate any outbound calls for record-keeping or tracking purposes.
@@ -9,10 +9,10 @@ All files and PDFs exist either exclusively on the client side, reside in server
 
 For more features and details, can refer to their GitHub: https://github.com/Stirling-Tools/Stirling-PDF.
 
-# Prerequisites
+## Prerequisites
 To follow along this blog post, all you need is a Codesphere Account which you can create by visiting ![here](https://codesphere.com/ide/signin).
 
-# Deployment
+## Deployment
 1. Click ![here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.
 
 ![Codesphere Sign-in Page](readme/1-Signin-Page.JPG?raw=true)
@@ -52,5 +52,5 @@ To follow along this blog post, all you need is a Codesphere Account which you c
 
 ![File Converter Web Application](readme/8-Stirling-PDF.JPG?raw=true)
 
-# Conclusion
+## Conclusion
 With Codesphere, you can create templates such as the PDF Service (Sterling-PDF) which we used in this one and have them ready-to-deploy without much hassle.

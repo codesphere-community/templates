@@ -13,14 +13,14 @@ For more features and details, can refer to their GitHub: https://github.com/Sti
 To follow along this blog post, all you need is a Codesphere Account which you can create by visiting [here](https://codesphere.com/ide/signin).
 
 ## Deployment
-1. Click ![here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.
+1. Click [here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.
 
 ![Codesphere Sign-in Page](https://github.com/codesphere-community/templates/blob/main/pdf-server/readme/1-Signin-Page.JPG?raw=true)
 
 
 2. Here click on New Workspace to create a workspace where you will import this template.
 
-![Codesphere Workspace Page](https://github.com/codesphere-community/templates/blob/main/pdf-server/readme/)2-Workspace-Page.JPG?raw=true)
+![Codesphere Workspace Page](https://github.com/codesphere-community/templates/blob/main/pdf-server/readme/2-Workspace-Page.JPG?raw=true)
 
 
 3. Put https://github.com/Stirling-Tools/Stirling-PDF as the repository link and select your desired configuration. Recommended is to select “Always on” in the Deployment mode to have your web application running always.

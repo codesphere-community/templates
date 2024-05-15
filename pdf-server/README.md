@@ -15,7 +15,7 @@ To follow along this blog post, all you need is a Codesphere Account which you c
 ## Deployment
 1. Click ![here](https://codesphere.com/ide/signin) to visit the Codesphere sign-in page and login using your preferred authentication.
 
-![Codesphere Sign-in Page](readme/1-Signin-Page.JPG?raw=true)
+![Codesphere Sign-in Page](https://github.com/codesphere-community/templates/blob/main/pdf-server/readme/1-Signin-Page.JPG?raw=true)
 
 
 2. Here click on New Workspace to create a workspace where you will import this template.

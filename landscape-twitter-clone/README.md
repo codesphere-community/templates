@@ -2,13 +2,14 @@
 
 1. Create a placeholder file e.g. `ci.txt`
 2. Copy following code snippet into that file:
-```json
-schemaVersion: v0.2
-prepare:
-  steps: []
-test:
-  steps: []
-run: {}
+   
+```yaml
+  schemaVersion: v0.2
+  prepare:
+    steps: []
+  test:
+    steps: []
+  run: {}
 ``` 
 3. Rename `ci.txt` to `ci.yml`
 

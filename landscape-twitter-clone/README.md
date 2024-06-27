@@ -1,4 +1,4 @@
-## How to activate public beta Landscape deployments on Codesphere
+## How to activate public beta Landscape Deployments on Codesphere
 
 1. Create a placeholder file e.g. `ci.txt`
 2. Copy following code snippet into that file:

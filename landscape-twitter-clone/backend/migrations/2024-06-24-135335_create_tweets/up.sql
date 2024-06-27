@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS tweets (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId INTEGER,
+    title TEXT NOT NULL,
+    likes INTEGER DEFAULT 0,
+    dislikes INTEGER DEFAULT 0,
+    text TEXT NOT NULL,
+    FOREIGN KEY (userId) REFERENCES users (id)
+);
+

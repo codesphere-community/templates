@@ -9,6 +9,10 @@ prepare:
       command: cd frontend/ && npm i
     - name: install diesel ORM
       command: nix-env -iA nixpkgs.diesel-cli
+    - name: diesel setup ORM (create db)
+      command: "cd backend && DATABASE_URL=sqlite://FakeTwitter.db diesel setup "
+    - name: migration
+      command: cd backend/ && DATABASE_URL=sqlite://FakeTwitter.db diesel migration run
 test:
   steps: []
 run:
@@ -25,7 +29,8 @@ run:
   backend:
     steps:
       - command: rustup default stable && cd backend/ && cargo build --release
-      - command: ./backend/target/release/backend
+      - command: DATABASE_URL=sqlite://backend/FakeTwitter.db
+          ./backend/target/release/backend
     plan: 8
     replicas: 1
     network:

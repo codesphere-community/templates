@@ -1,5 +1,6 @@
 prepare:
   steps:
+    - command: sudo n lts
     - name: install dependency
       command: npm install cache-manager@5.2.4 --save
     - name: install n8n
@@ -9,4 +10,5 @@ test:
 run:
   steps:
     - name: deploy
-      command: N8N_PORT=3000 ./node_modules/n8n/bin/n8n start
+      command: sudo n install lts && N8N_USER_FOLDER=/home/user/app/ N8N_PORT=3000
+        N8N_PROTOCOL=https         ./node_modules/n8n/bin/n8n start --tunnel

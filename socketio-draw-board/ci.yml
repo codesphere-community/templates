@@ -1,0 +1,14 @@
+prepare:
+  steps:
+  - name: "Install dependencies"
+    command: "npm install"
+
+test:
+  steps:
+  - name: "Validate server"
+    command: "node --check server.js"
+
+run:
+  steps:
+  - name: "Run"
+    command: "npm start"

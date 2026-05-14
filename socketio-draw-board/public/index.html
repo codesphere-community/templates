@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.IO Collaborative Draw Board</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="toolbar">
+        <div>
+          <p class="eyebrow">Socket.IO board</p>
+          <h1>Draw together in real time.</h1>
+        </div>
+
+        <form id="roomForm" class="room">
+          <label for="room">Room</label>
+          <input id="room" name="room" autocomplete="off" />
+          <button type="submit">Join</button>
+        </form>
+      </header>
+
+      <section class="controls" aria-label="Drawing controls">
+        <label>
+          Color
+          <input id="color" type="color" value="#1f7a5b" />
+        </label>
+        <label>
+          Size <span id="sizeValue">8px</span>
+          <input id="size" type="range" min="2" max="32" value="8" />
+        </label>
+        <button id="clear" type="button">Clear</button>
+        <button id="download" type="button">Download JPG</button>
+        <span id="onlineCount" class="presence">1 online</span>
+      </section>
+
+      <section class="canvas-wrap">
+        <canvas id="board" aria-label="Collaborative drawing canvas"></canvas>
+      </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

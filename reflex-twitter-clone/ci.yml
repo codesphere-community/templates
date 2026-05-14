@@ -1,0 +1,20 @@
+schemaVersion: v0.2
+prepare:
+  steps:
+    - name: Install Python dependencies
+      command: pip install -r requirements.txt
+    - name: Initialize Reflex project
+      command: reflex init
+test:
+  steps:
+    - name: Export Reflex app
+      command: reflex export --frontend-only --no-zip
+run:
+  app:
+    steps:
+      - name: Start Reflex Twitter clone
+        command: reflex run --env prod --backend-host 0.0.0.0 --frontend-port 3000 --backend-port 8000
+    plan: 8
+    replicas: 1
+    network:
+      path: /

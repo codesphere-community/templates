@@ -1,0 +1,10 @@
+{
+  "Workspace": "Micro",
+  "Links": {
+    "Reflex": "https://reflex.dev/",
+    "Codesphere CI Pipelines": "https://docs.codesphere.com/getting-started/ci-pipelines"
+  },
+  "Categories": ["Python", "Reflex", "Social", "Template"],
+  "Contributors": ["kenproxx"],
+  "Title": "Reflex Twitter Clone"
+}

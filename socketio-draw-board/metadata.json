@@ -1,0 +1,10 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "Socket.IO": "https://socket.io/",
+    "Express": "https://expressjs.com/"
+  },
+  "Categories": ["Application", "Framework"],
+  "Contributors": ["kenproxx"],
+  "Title": "Socket.IO - Collaborative Draw Board"
+}

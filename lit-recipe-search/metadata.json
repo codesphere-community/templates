@@ -1,0 +1,10 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "Lit": "https://lit.dev/",
+    "TheMealDB": "https://www.themealdb.com/api.php"
+  },
+  "Categories": ["Framework", "Application"],
+  "Contributors": ["kenproxx"],
+  "Title": "LitElement - Recipe Search App"
+}

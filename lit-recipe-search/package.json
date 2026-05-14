@@ -1,0 +1,19 @@
+{
+  "name": "lit-recipe-search",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lit": "^3.1.4",
+    "vite": "^8.0.13"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

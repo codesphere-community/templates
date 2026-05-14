@@ -1,0 +1,16 @@
+prepare:
+  steps:
+  - name: "Install dependencies"
+    command: "npm install"
+  - name: "Build"
+    command: "npm run build"
+
+test:
+  steps:
+  - name: "Type check"
+    command: "npm run typecheck"
+
+run:
+  steps:
+  - name: "Run"
+    command: "npm run preview -- --host 0.0.0.0 --port 3000"

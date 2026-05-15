@@ -1,0 +1,14 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "Python": "https://codesphere.com/articles/python",
+    "FastAPI": "https://fastapi.tiangolo.com/"
+  },
+  "Categories": [
+    "Framework"
+  ],
+  "Contributors": [
+    "ydd039"
+  ],
+  "Title": "FastAPI - Real-time Chat App"
+}

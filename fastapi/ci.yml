@@ -1,0 +1,14 @@
+prepare:
+  steps:
+  - name: "Install dependencies"
+    command: "pip install -r requirements.txt"
+
+test:
+  steps:
+  - name: "Run tests"
+    command: "python -m pytest tests/ -v"
+
+run:
+  steps:
+  - name: "Start FastAPI server"
+    command: "uvicorn main:app --host 0.0.0.0 --port 8080"

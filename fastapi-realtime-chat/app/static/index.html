@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FastAPI Real-Time Chat</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p>FastAPI Template</p>
+        <h1>Real-time chat with WebSockets</h1>
+        <span id="status">Sign in to join a room</span>
+      </section>
+
+      <form id="login-form" class="panel">
+        <label>
+          Username
+          <input name="username" value="ada" autocomplete="username">
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" value="codesphere" autocomplete="current-password">
+        </label>
+        <button type="submit">Sign in</button>
+      </form>
+
+      <section id="chat-app" class="chat" hidden>
+        <aside class="sidebar">
+          <strong id="user-label"></strong>
+          <nav id="rooms" aria-label="Chat rooms"></nav>
+          <button id="logout" type="button">Sign out</button>
+        </aside>
+
+        <section class="conversation" aria-label="Messages">
+          <ul id="messages"></ul>
+          <form id="message-form">
+            <input id="message" placeholder="Write a message..." maxlength="500">
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

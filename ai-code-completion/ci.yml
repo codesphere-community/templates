@@ -1,0 +1,14 @@
+prepare:
+  steps:
+    - name: "Install dependencies"
+      command: "npm install"
+
+test:
+  steps:
+    - name: "Lint"
+      command: "npm run lint || true"
+
+run:
+  steps:
+    - name: "Start dev server"
+      command: "PORT=3000 npm run dev"

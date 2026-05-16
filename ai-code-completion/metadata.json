@@ -1,0 +1,10 @@
+{
+  "Workspace": "paid",
+  "Links": {
+    "Next.js": "https://nextjs.org/",
+    "CodeMirror": "https://codemirror.net/"
+  },
+  "Categories": ["AI", "Developer Tools"],
+  "Contributors": ["opencode-MiniMaxM27"],
+  "Title": "AI Code Completion Tool"
+}

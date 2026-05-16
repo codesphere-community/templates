@@ -1,0 +1,4 @@
+.config/
+.dart_tool/
+.flutter/
+build/

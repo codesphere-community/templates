@@ -1,0 +1,10 @@
+{
+  "name": "Flutter Weather",
+  "short_name": "Weather",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#E0F2FE",
+  "theme_color": "#0F766E",
+  "description": "A Flutter for Web weather app template for Codesphere.",
+  "orientation": "portrait-primary"
+}

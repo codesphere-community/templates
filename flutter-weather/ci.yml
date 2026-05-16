@@ -1,0 +1,18 @@
+prepare:
+  steps:
+  - name: "Install Flutter if needed"
+    command: "./scripts/ensure_flutter.sh"
+  - name: "Install dependencies"
+    command: "export XDG_CONFIG_HOME=\"$PWD/.config\" && export PATH=\"$PWD/.flutter/bin:$PATH\" && flutter pub get"
+  - name: "Analyze"
+    command: "export XDG_CONFIG_HOME=\"$PWD/.config\" && export PATH=\"$PWD/.flutter/bin:$PATH\" && flutter analyze"
+  - name: "Build"
+    command: "export XDG_CONFIG_HOME=\"$PWD/.config\" && export PATH=\"$PWD/.flutter/bin:$PATH\" && flutter build web --release"
+
+test:
+  steps: []
+
+run:
+  steps:
+  - name: "Run"
+    command: "python3 -m http.server 3000 --directory build/web"

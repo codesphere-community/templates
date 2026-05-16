@@ -1,0 +1,17 @@
+{
+  "name": "svelte-sprint-board",
+  "version": "1.0.0",
+  "description": "A Codesphere-ready Svelte sprint planning board.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "svelte": "^4.2.19",
+    "vite": "^5.4.11"
+  },
+  "devDependencies": {}
+}

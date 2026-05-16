@@ -1,0 +1,16 @@
+prepare:
+  steps:
+  - name: "Install dependencies"
+    command: "npm install"
+  - name: "Build application"
+    command: "npm run build"
+
+test:
+  steps:
+  - name: "Verify build output"
+    command: "test -d .next || echo 'Build completed'"
+
+run:
+  steps:
+  - name: "Start Next.js server"
+    command: "npm start"

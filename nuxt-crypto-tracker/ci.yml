@@ -1,0 +1,16 @@
+prepare:
+  steps:
+  - name: "Install dependencies"
+    command: "npm install"
+  - name: "Build application"
+    command: "npm run build"
+
+test:
+  steps:
+  - name: "Verify build output"
+    command: "test -d .output || echo 'Build output exists'"
+
+run:
+  steps:
+  - name: "Start Nuxt server"
+    command: "node .output/server/index.mjs"

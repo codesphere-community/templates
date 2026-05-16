@@ -1,0 +1,19 @@
+name: flutter_weather_template
+description: A Codesphere-ready Flutter for Web weather app template.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  http: ^1.2.2
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

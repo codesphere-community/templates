@@ -1,0 +1,14 @@
+prepare:
+  steps:
+    - name: "Install dependencies"
+      command: "npm install"
+
+test:
+  steps:
+    - name: "Check server starts"
+      command: "node server.js & sleep 3 && curl -s http://localhost:3000/health && pkill -f 'node server.js'"
+
+run:
+  steps:
+    - name: "Start server"
+      command: "PORT=3000 node server.js"

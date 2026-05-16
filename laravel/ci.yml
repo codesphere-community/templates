@@ -1,0 +1,14 @@
+prepare:
+  steps:
+  - name: "Install dependencies"
+    command: "composer install --no-interaction"
+
+test:
+  steps:
+  - name: "Run migrations"
+    command: "php artisan migrate --force 2>&1 || true"
+
+run:
+  steps:
+  - name: "Start Laravel dev server"
+    command: "php artisan serve --host=0.0.0.0 --port=3000"

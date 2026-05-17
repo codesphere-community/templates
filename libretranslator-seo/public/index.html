@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LibreTranslator SEO Demo</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23176b87'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle' fill='white' font-family='Arial'%3EL%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <strong>LibreTranslator SEO</strong>
+      <nav aria-label="Language selector">
+        <button class="lang-button active" data-lang="en">EN</button>
+        <button class="lang-button" data-lang="de">DE</button>
+        <button class="lang-button" data-lang="es">ES</button>
+        <button class="lang-button" data-lang="fr">FR</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow" data-i18n>Self-hosted translation for content teams</p>
+          <h1 data-i18n>Translate pages without duplicating your whole website.</h1>
+          <p data-i18n>
+            Use Codesphere and LibreTranslate to test multilingual pages, keep product terminology consistent, and export translated HTML for SEO review.
+          </p>
+        </div>
+        <aside class="status-panel">
+          <span>Translator</span>
+          <strong id="status">Checking...</strong>
+          <small id="cache">Cache entries: 0</small>
+        </aside>
+      </section>
+
+      <section class="content-grid">
+        <article>
+          <h2 data-i18n>Plugin-style language buttons</h2>
+          <p data-i18n>
+            Add a small script to your page, mark translatable copy with data attributes, and let the widget replace text in place.
+          </p>
+        </article>
+        <article>
+          <h2 data-i18n>Terminology feedback</h2>
+          <p data-i18n>
+            Glossary overrides keep Codesphere, LibreTranslate, and CI pipeline wording stable across languages.
+          </p>
+        </article>
+        <article>
+          <h2 data-i18n>SEO-ready previews</h2>
+          <p data-i18n>
+            The server can translate HTML and return canonical plus alternate language metadata for review workflows.
+          </p>
+        </article>
+      </section>
+
+      <section class="preview">
+        <div>
+          <h2>Translated HTML preview</h2>
+          <p>Generate a page-level translation response using the same source content.</p>
+        </div>
+        <button id="preview-button">Build preview</button>
+        <pre id="preview-output"></pre>
+      </section>
+    </main>
+
+    <script src="/translator-widget.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "libretranslator-seo-template",
+  "version": "1.0.0",
+  "description": "Codesphere template for SEO-friendly webpage translation with a self-hosted LibreTranslate endpoint.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {}
+}

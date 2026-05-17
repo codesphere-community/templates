@@ -1,0 +1,44 @@
+{
+  "name": "Blogpost to Apache Beam TF-IDF",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "blogpost-keywords",
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "id": "Webhook",
+      "name": "Blogpost Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 260]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:3000/webhook/blogposts",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { slug: $json.slug, title: $json.title, body: $json.body } }}"
+      },
+      "id": "Forward",
+      "name": "Forward to Beam Webhook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [520, 260]
+    }
+  ],
+  "connections": {
+    "Blogpost Webhook": {
+      "main": [
+        [
+          {
+            "node": "Forward to Beam Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

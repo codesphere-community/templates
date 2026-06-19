@@ -1,0 +1,6 @@
+version: 1.0
+steps:
+- name: Install dependencies
+  command: pip install -r requirements.txt
+- name: Run application
+  command: python app.py

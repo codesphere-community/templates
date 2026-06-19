@@ -1,0 +1,1 @@
+import sqlite3\nconn = sqlite3.connect('blogposts.db')\nc = conn.cursor()\nc.execute('''CREATE TABLE IF NOT EXISTS blogposts (id INTEGER PRIMARY KEY, content TEXT)''')\nc.execute('''CREATE TABLE IF NOT EXISTS keywords (post_id INTEGER, keyword TEXT, tfidf REAL, FOREIGN KEY(post_id) REFERENCES blogposts(id))''')\nconn.commit()\nconn.close()

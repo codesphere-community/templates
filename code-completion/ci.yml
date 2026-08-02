@@ -1,0 +1,18 @@
+# Codesphere pipeline for the dependency-free Python application.
+
+prepare:
+  steps:
+  - name: "Install dependencies"
+    command: "python3 -m pip install --no-cache-dir -r requirements.txt"
+
+test:
+  steps:
+  - name: "Run unit tests"
+    command: "python3 -m unittest discover -s tests -v"
+  - name: "Compile Python modules"
+    command: "python3 -m py_compile app.py completion.py tests/test_completion.py"
+
+run:
+  steps:
+  - name: "Run application"
+    command: "./start.sh"

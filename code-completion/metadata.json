@@ -1,0 +1,11 @@
+{
+  "Workspace": "Pro",
+  "Links": {
+    "README": "https://github.com/codesphere-community/templates/tree/main/code-completion",
+    "Blogpost": "https://github.com/codesphere-community/templates/blob/main/code-completion/BLOG_POST.md",
+    "Llama.cpp": "https://github.com/ggerganov/llama.cpp"
+  },
+  "Categories": ["Application", "AI"],
+  "Contributors": ["joseignaciok"],
+  "Title": "Local Code Completion"
+}

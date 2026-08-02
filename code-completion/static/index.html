@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Code Completion</title>
+  <style>
+    :root { color-scheme: dark; --bg: #09111f; --panel: #111d30; --muted: #8ea1bd; --accent: #6ee7b7; --border: #263955; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; font: 15px/1.5 system-ui, sans-serif; color: #e9f1ff; background: radial-gradient(circle at 15% 0%, #163452, var(--bg) 48%); }
+    main { width: min(1100px, 100% - 32px); margin: 0 auto; padding: 48px 0; }
+    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
+    h1 { margin: 8px 0; font-size: clamp(32px, 6vw, 58px); line-height: 1.05; }
+    .intro { max-width: 700px; color: var(--muted); font-size: 17px; }
+    .grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; margin-top: 30px; }
+    .panel { background: color-mix(in srgb, var(--panel) 94%, transparent); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: 0 20px 60px #0003; }
+    label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+    select, textarea, button { font: inherit; border-radius: 10px; border: 1px solid var(--border); }
+    select, textarea { width: 100%; color: #e9f1ff; background: #0b1627; padding: 11px 12px; }
+    textarea { min-height: 280px; resize: vertical; font: 13px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .row { display: flex; gap: 12px; align-items: end; margin-bottom: 14px; }
+    .row > * { flex: 1; }
+    button { padding: 11px 16px; color: #051016; background: var(--accent); font-weight: 800; cursor: pointer; }
+    button.secondary { color: #e9f1ff; background: #1b2b45; }
+    button:disabled { cursor: wait; opacity: .6; }
+    pre { min-height: 280px; margin: 0; padding: 14px; overflow: auto; white-space: pre-wrap; color: #d6e4ff; background: #0b1627; border: 1px solid var(--border); border-radius: 10px; font: 13px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .status { color: var(--muted); font-size: 13px; }
+    .status.ok { color: var(--accent); }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } main { padding: 28px 0; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Self-hosted · privacy-first</div>
+    <h1>Local Code Completion</h1>
+    <p class="intro">A focused Codesphere template for running code suggestions through your own OpenAI-compatible local model. Your source stays in the browser and the app never logs prompts or secrets.</p>
+    <div class="grid">
+      <section class="panel">
+        <div class="row">
+          <div><label for="language">Language</label><select id="language"><option>Python</option><option>JavaScript</option><option>TypeScript</option><option>Rust</option><option>Go</option><option>SQL</option></select></div>
+          <button id="complete">Suggest completion</button>
+        </div>
+        <label for="editor">Code before the cursor</label>
+        <textarea id="editor" spellcheck="false">def fibonacci(n):
+    if n <= 1:
+        return n
+    </textarea>
+        <p class="status" id="status">Checking local model endpoint…</p>
+      </section>
+      <section class="panel">
+        <label for="result">Suggested code</label>
+        <pre id="result">Your local model's completion will appear here.</pre>
+        <div class="row" style="margin-top: 14px;">
+          <button class="secondary" id="insert" disabled>Insert suggestion</button>
+          <span></span>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const editor = document.querySelector('#editor');
+    const language = document.querySelector('#language');
+    const result = document.querySelector('#result');
+    const status = document.querySelector('#status');
+    const complete = document.querySelector('#complete');
+    const insert = document.querySelector('#insert');
+    let suggestion = '';
+    fetch('/api/health').then(r => r.json()).then(data => {
+      status.textContent = `Model endpoint: ${data.model_base_url}`;
+      status.classList.add('ok');
+    }).catch(() => { status.textContent = 'Start a local model server to enable suggestions.'; });
+    complete.addEventListener('click', async () => {
+      complete.disabled = true; insert.disabled = true; status.textContent = 'Asking the local model…';
+      try {
+        const response = await fetch('/api/complete', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({prefix: editor.value, suffix: '', language: language.value}) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Completion failed');
+        suggestion = data.completion || ''; result.textContent = suggestion || 'The model returned an empty completion.'; insert.disabled = !suggestion; status.textContent = 'Completion received from the local model.'; status.classList.add('ok');
+      } catch (error) { result.textContent = error.message; status.textContent = 'The local model could not be reached.'; status.classList.remove('ok'); }
+      complete.disabled = false;
+    });
+    insert.addEventListener('click', () => { editor.value += suggestion; editor.focus(); insert.disabled = true; });
+  </script>
+</body>
+</html>

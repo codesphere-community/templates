@@ -1,0 +1,10 @@
+{
+  "Workspace": "free",
+  "Links": {
+    "LibreTranslate": "https://libretranslate.com/",
+    "Codesphere CI pipelines": "https://docs.codesphere.com/getting-started/ci-pipelines"
+  },
+  "Categories": ["Application", "SEO", "Translation"],
+  "Contributors": ["OpenAI-Codex"],
+  "Title": "LibreTranslator SEO Webpage Translator"
+}

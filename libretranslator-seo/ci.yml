@@ -1,0 +1,14 @@
+prepare:
+  steps:
+    - name: Install dependencies
+      command: npm ci
+    - name: Run tests
+      command: npm test
+test:
+  steps:
+    - name: Test
+      command: npm test
+run:
+  steps:
+    - name: Run
+      command: npm start

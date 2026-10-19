@@ -170,9 +170,12 @@ export async function translateHtml({
 
   const $ = cheerio.load(html, { decodeEntities: false });
   const nodes = [];
-  $("body, main, article, section, header, footer, nav, h1, h2, h3, p, li, a, button, span")
+  $("body, body *")
     .contents()
-    .filter((_, node) => node.type === "text" && $(node).text().trim() !== "")
+    .filter((_, node) => {
+      if (node.type !== "text" || !$(node).text().trim()) return false;
+      return !$(node).parent().closest("script, style, noscript, template, textarea").length;
+    })
     .each((_, node) => nodes.push(node));
 
   const translated = await Promise.all(
